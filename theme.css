@@ -1450,12 +1450,12 @@ pre {
   .markdown-rendered table {
     font-size: 0.9rem;
   }
-  
+
   .markdown-rendered table th,
   .markdown-rendered table td {
     padding: 0.5rem !important;
   }
-  
+
   .markdown-rendered table th {
     font-size: 0.8em !important;
   }
@@ -1465,7 +1465,7 @@ pre {
   .markdown-rendered table {
     font-size: 0.8rem;
   }
-  
+
   .markdown-rendered table th,
   .markdown-rendered table td {
     padding: 0.3rem !important;
@@ -1809,6 +1809,655 @@ pre {
 }
 
 /* ================================================================
+   LISTS - RETRO-FUTURISTIC STYLING
+   ================================================================ */
+
+/* ========== */
+/* ORDERED LISTS - DECIMAL LEADING ZERO */
+/* ========== */
+
+.markdown-rendered ol {
+  list-style: none;
+  counter-reset: cyber-counter;
+  padding-left: 0;
+  position: relative;
+  margin: 1.5rem 0;
+  max-width: 100%;
+}
+
+.markdown-rendered ol li {
+  counter-increment: cyber-counter;
+  position: relative;
+  padding-left: 2.8rem;
+  margin: 0.8rem 0;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Retro-futuristic number styling */
+.markdown-rendered ol li::before {
+  content: counter(cyber-counter, decimal-leading-zero) "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-interface);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.1) 0%,
+    rgba(var(--yellow-rgb), 0.05) 50%,
+    transparent 100%
+  );
+  padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+  border-left: 2px solid rgba(var(--yellow-rgb), 0.6);
+  border-radius: 0 3px 3px 0;
+  max-width: 2.2rem;
+  width: auto;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: subtle-pulse 3s ease-in-out infinite alternate;
+}
+
+/* Hover effects for list items */
+.markdown-rendered ol li:hover::before {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.2) 0%,
+    rgba(var(--yellow-rgb), 0.1) 50%,
+    rgba(var(--yellow-rgb), 0.02) 100%
+  );
+  border-left-color: var(--yellow);
+  text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.8);
+}
+
+/* Subtle scan line effect */
+.markdown-rendered ol li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--yellow-rgb), 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  animation: scan-line 4s linear infinite;
+  opacity: 0.3;
+  overflow: hidden;
+}
+
+/* ========== */
+/* UNORDERED LISTS - BLOCK CHARACTERS */
+/* ========== */
+
+.markdown-rendered ul {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.markdown-rendered ul li {
+  position: relative;
+  padding-left: 2rem;
+  margin: 0.6rem 0;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Level 1 - Primary block character */
+.markdown-rendered ul li::before {
+  content: "▓";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: var(--font-interface);
+  font-size: 1rem;
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
+  animation: block-flicker 2.5s ease-in-out infinite;
+}
+
+/* Level 2 - Medium block character */
+.markdown-rendered ul ul li::before {
+  content: "▒";
+  color: rgba(var(--yellow-rgb), 0.8);
+  left: 0.1rem;
+  font-size: 0.9rem;
+}
+
+/* Level 3 - Light block character */
+.markdown-rendered ul ul ul li::before {
+  content: "░";
+  color: rgba(var(--yellow-rgb), 0.6);
+  left: 0.2rem;
+  font-size: 0.8rem;
+}
+
+/* Level 4+ - Arrow character */
+.markdown-rendered ul ul ul ul li::before {
+  content: "▸";
+  color: rgba(var(--yellow-rgb), 0.5);
+  left: 0.3rem;
+  font-size: 0.7rem;
+}
+
+/* Nested list spacing adjustments */
+.markdown-rendered ul ul {
+  margin: 0.3rem 0;
+  padding-left: 1.2rem;
+}
+
+.markdown-rendered ul ul ul {
+  padding-left: 1rem;
+}
+
+.markdown-rendered ul ul ul ul {
+  padding-left: 0.8rem;
+}
+
+/* ========== */
+/* HOVER EFFECTS & INTERACTIONS */
+/* ========== */
+
+/* Subtle glow on list item hover */
+.markdown-rendered li:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.02) 0%,
+    transparent 30%
+  );
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+/* Tech grid pattern overlay for lists */
+.markdown-rendered ol::before,
+.markdown-rendered ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 90% 10%,
+    rgba(var(--yellow-rgb), 0.01) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Corner brackets for the entire list container */
+.markdown-rendered ol::after,
+.markdown-rendered ul::after {
+  content: "└";
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0;
+  color: rgba(var(--yellow-rgb), 0.3);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  pointer-events: none;
+}
+
+/* Alternative data stream effect for ordered lists */
+.markdown-rendered ol li:nth-child(even)::before {
+  animation-delay: 0.5s;
+}
+
+.markdown-rendered ol li:nth-child(3n)::before {
+  animation-delay: 1s;
+}
+
+/* Block character fade pattern for unordered lists */
+.markdown-rendered ul li:nth-child(even)::before {
+  animation-delay: 0.8s;
+}
+
+.markdown-rendered ul li:nth-child(3n)::before {
+  animation-delay: 1.6s;
+}
+
+/* ========== */
+/* CHECKLIST SUPPORT */
+/* ========== */
+
+/* Style for task lists (checkboxes) */
+.markdown-rendered ul.contains-task-list li {
+  padding-left: 2rem;
+}
+
+.markdown-rendered ul.contains-task-list li::before {
+  display: none; /* Hide block character for task lists */
+}
+
+/* Custom checkbox styling */
+.markdown-rendered ul.contains-task-list li input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(var(--yellow-rgb), 0.5);
+  background: transparent;
+  border-radius: 2px;
+  margin-right: 0.8rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.markdown-rendered ul.contains-task-list li input[type="checkbox"]:checked {
+  border-color: var(--yellow);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--yellow-rgb), 0.2) 0%,
+    rgba(var(--yellow-rgb), 0.1) 100%
+  );
+  box-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.3);
+}
+
+.markdown-rendered
+  ul.contains-task-list
+  li
+  input[type="checkbox"]:checked::after {
+  content: "▓";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 10px;
+  color: var(--yellow);
+  text-shadow: 0 0 2px rgba(var(--yellow-rgb), 0.8);
+}
+
+/* ========== */
+/* LIST ANIMATIONS */
+/* ========== */
+
+@keyframes subtle-pulse {
+  0% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.7);
+  }
+}
+
+@keyframes block-flicker {
+  0%,
+  95% {
+    opacity: 1;
+  }
+  96%,
+  98% {
+    opacity: 0.3;
+  }
+  99%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+/* ========== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ========== */
+
+/* Smaller screens - reduce spacing */
+@media (max-width: 768px) {
+  .markdown-rendered ol li {
+    padding-left: 2.2rem;
+  }
+
+  .markdown-rendered ul li {
+    padding-left: 1.5rem;
+  }
+
+  .markdown-rendered ol li::before {
+    max-width: 1.8rem;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem 0.1rem 0.2rem;
+  }
+
+  .markdown-rendered ul li::before {
+    font-size: 0.85rem;
+  }
+
+  /* Reduce nested list spacing on mobile */
+  .markdown-rendered ul ul {
+    padding-left: 1rem;
+  }
+
+  .markdown-rendered ul ul ul {
+    padding-left: 0.8rem;
+  }
+
+  .markdown-rendered ul ul ul ul {
+    padding-left: 0.6rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .markdown-rendered ol li {
+    padding-left: 2rem;
+  }
+
+  .markdown-rendered ul li {
+    padding-left: 1.3rem;
+  }
+
+  .markdown-rendered ol li::before {
+    max-width: 1.6rem;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.2rem;
+  }
+}
+
+/* ================================================================
+   BLOCKQUOTES - RETRO-FUTURISTIC STYLING
+   ================================================================ */
+
+/* Main blockquote container with retro terminal feel */
+.markdown-rendered blockquote {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Terminal-style left border with gradient */
+.markdown-rendered blockquote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--yellow) 0%,
+    rgba(var(--yellow-rgb), 0.8) 25%,
+    rgba(var(--yellow-rgb), 0.4) 75%,
+    rgba(var(--yellow-rgb), 0.2) 100%
+  );
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(var(--yellow-rgb), 0.3);
+}
+
+/* Terminal prompt indicator */
+.markdown-rendered blockquote::after {
+  content: "▸";
+  position: absolute;
+  top: 0.2rem;
+  left: 1rem;
+  color: rgba(var(--yellow-rgb), 0.6);
+  font-family: var(--font-interface);
+  font-size: 0.9rem;
+  font-style: normal;
+  animation: prompt-pulse 2s ease-in-out infinite;
+}
+
+/* Content area with subtle tech background */
+.markdown-rendered blockquote > * {
+  margin-left: 2.5rem;
+  margin-right: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* First paragraph gets special treatment */
+.markdown-rendered blockquote > p:first-child {
+  margin-top: 0.75rem;
+  position: relative;
+}
+
+/* Last paragraph cleanup */
+.markdown-rendered blockquote > p:last-child {
+  margin-bottom: 0.75rem;
+}
+
+/* Subtle scan line effect */
+.markdown-rendered blockquote > p:first-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  right: -1rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--yellow-rgb), 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: scan-quote 4s linear infinite;
+  opacity: 0.5;
+}
+
+/* Grid pattern overlay for tech feel */
+.markdown-rendered blockquote > p::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  right: -1rem;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(var(--yellow-rgb), 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 15px 15px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* ========== */
+/* NESTED BLOCKQUOTES */
+/* ========== */
+
+/* Level 2 blockquotes */
+.markdown-rendered blockquote blockquote {
+  margin: 1rem 0;
+}
+
+.markdown-rendered blockquote blockquote::before {
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--blue-rgb), 0.8) 0%,
+    rgba(var(--blue-rgb), 0.6) 25%,
+    rgba(var(--blue-rgb), 0.3) 75%,
+    rgba(var(--blue-rgb), 0.1) 100%
+  );
+  box-shadow: 0 0 6px rgba(var(--blue-rgb), 0.2);
+}
+
+.markdown-rendered blockquote blockquote::after {
+  content: "▒";
+  color: rgba(var(--blue-rgb), 0.5);
+}
+
+/* Level 3 blockquotes */
+.markdown-rendered blockquote blockquote blockquote::before {
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--purple-rgb), 0.6) 0%,
+    rgba(var(--purple-rgb), 0.4) 50%,
+    rgba(var(--purple-rgb), 0.1) 100%
+  );
+  box-shadow: 0 0 4px rgba(var(--purple-rgb), 0.2);
+}
+
+.markdown-rendered blockquote blockquote blockquote::after {
+  content: "░";
+  color: rgba(var(--purple-rgb), 0.4);
+}
+
+/* ========== */
+/* SPECIAL BLOCKQUOTE TYPES */
+/* ========== */
+
+/* Warning blockquotes (containing [!WARNING] or similar) */
+.markdown-rendered blockquote:has([data-callout="warning"]),
+.markdown-rendered blockquote p:first-child:contains("WARNING")::before,
+.markdown-rendered blockquote p:first-child:contains("ALERT")::before {
+  background: linear-gradient(
+    180deg,
+    var(--orange) 0%,
+    rgba(var(--orange-rgb), 0.7) 50%,
+    rgba(var(--orange-rgb), 0.2) 100%
+  );
+  box-shadow: 0 0 10px rgba(var(--orange-rgb), 0.4);
+}
+
+/* Info blockquotes */
+.markdown-rendered blockquote p:first-child:contains("INFO")::before,
+.markdown-rendered blockquote p:first-child:contains("NOTE")::before {
+  background: linear-gradient(
+    180deg,
+    var(--blue) 0%,
+    rgba(var(--blue-rgb), 0.7) 50%,
+    rgba(var(--blue-rgb), 0.2) 100%
+  );
+  box-shadow: 0 0 8px rgba(var(--blue-rgb), 0.3);
+}
+
+/* Success blockquotes */
+.markdown-rendered blockquote p:first-child:contains("SUCCESS")::before,
+.markdown-rendered blockquote p:first-child:contains("COMPLETE")::before {
+  background: linear-gradient(
+    180deg,
+    var(--green) 0%,
+    rgba(var(--green-rgb), 0.7) 50%,
+    rgba(var(--green-rgb), 0.2) 100%
+  );
+  box-shadow: 0 0 8px rgba(var(--green-rgb), 0.3);
+}
+
+/* ========== */
+/* HOVER EFFECTS */
+/* ========== */
+
+.markdown-rendered blockquote:hover::before {
+  box-shadow: 0 0 12px rgba(var(--yellow-rgb), 0.5);
+  background: linear-gradient(
+    180deg,
+    var(--yellow) 0%,
+    rgba(var(--yellow-rgb), 0.9) 20%,
+    rgba(var(--yellow-rgb), 0.6) 60%,
+    rgba(var(--yellow-rgb), 0.3) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.markdown-rendered blockquote:hover::after {
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.6);
+  transition: all 0.3s ease;
+}
+
+/* ========== */
+/* ANIMATIONS */
+/* ========== */
+
+@keyframes prompt-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.4);
+  }
+}
+
+@keyframes scan-quote {
+  0% {
+    background-position: -100% 0;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    background-position: 100% 0;
+    opacity: 0.3;
+  }
+}
+
+/* ========== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ========== */
+
+@media (max-width: 768px) {
+  .markdown-rendered blockquote > * {
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  .markdown-rendered blockquote::after {
+    left: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .markdown-rendered blockquote > p:first-child::before {
+    left: -1.5rem;
+  }
+
+  .markdown-rendered blockquote > p::after {
+    left: -1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-rendered blockquote > * {
+    margin-left: 1.5rem;
+    margin-right: 0.25rem;
+  }
+
+  .markdown-rendered blockquote::before {
+    width: 3px;
+  }
+
+  .markdown-rendered blockquote::after {
+    left: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* ================================================================
    MOBILE RESPONSIVENESS
    ================================================================ */
 
@@ -2115,19 +2764,4 @@ textarea:focus::after {
   border-radius: 0 0 5px 5px;
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(var(--yellow-rgb), 0.1);
-}
-
-/* ================================================================
-   PRINT STYLES
-   ================================================================ */
-
-@media print {
-  body {
-    background: white;
-    color: black;
-  }
-
-  * {
-    box-shadow: none !important;
-  }
 }
