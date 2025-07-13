@@ -1,0 +1,1594 @@
+/* ---------------------------------------------------------------------------
+
+Retro-Futuristic Theme by @gvorbeck
+
+An 80's retro-futuristic theme inspired by the movie 'Aliens'.
+Experience Obsidian as if you're working on an aging starship's terminal screen.
+
+Featuring:
+- VT323 monospace font for that authentic terminal feel
+- Amber/green terminal color scheme with scanline effects
+- Glowing text and subtle animations
+- Weathered, industrial interface elements
+- Perfect for space-age note-taking
+
+Version: 1.0.0
+GitHub: https://github.com/gvorbeck/obsidian-retro-futuristic-theme
+
+--------------------------------------------------------------------------- */
+
+/* Import the retro terminal font */
+@import url("https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap");
+
+/* Base theme variables - Using your comfortable color palette */
+body {
+  /* Your existing color system from snippets */
+  --yellow: #e8d8a3;
+  --yellow-rgb: 232, 216, 163;
+  --blue: #6b8ca4;
+  --blue-rgb: 107, 140, 164;
+  --green: #7a8f71;
+  --green-rgb: 122, 143, 113;
+  --orange: #c28c5c;
+  --orange-rgb: 194, 140, 92;
+  --red: #b06c5a;
+  --red-rgb: 176, 108, 90;
+  --purple: #9c7a99;
+  --purple-rgb: 156, 122, 153;
+  --gray: #a8a8a8;
+  --gray-rgb: 168, 168, 168;
+
+  /* Gruvbox-inspired background colors */
+  --bg-primary: #1d2021;
+  --bg-secondary: #282828;
+  --bg-tertiary: #3c3836;
+  --bg-accent: #504945;
+  --fg-primary: #ebdbb2;
+  --fg-secondary: #d5c4a1;
+  --fg-tertiary: #bdae93;
+
+  /* Typography */
+  --font-terminal: "VT323", "Share Tech Mono", "Courier New", monospace;
+  --font-interface: "Share Tech Mono", "Courier New", monospace;
+  --font-text: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-text-size: 16px;
+
+  /* Spacing and sizing */
+  --padding: 12px;
+  --border-radius: 4px;
+  --border-width: 1px;
+}
+
+/* Light theme - Warm retro feel */
+.theme-light {
+  /* Backgrounds */
+  --background-primary: #fbf1c7;
+  --background-secondary: #f2e5bc;
+  --background-secondary-alt: #ebdbb2;
+  --background-modifier-hover: rgba(var(--yellow-rgb), 0.1);
+  --background-modifier-active-hover: rgba(var(--yellow-rgb), 0.15);
+  --background-modifier-border: rgba(var(--gray-rgb), 0.2);
+  --background-modifier-border-hover: rgba(var(--gray-rgb), 0.3);
+  --background-modifier-border-focus: var(--blue);
+  --background-modifier-form-field: #f9f5d7;
+  --background-modifier-cover: rgba(40, 40, 40, 0.8);
+
+  /* Text colors */
+  --text-normal: #3c3836;
+  --text-muted: #665c54;
+  --text-faint: #a89984;
+  --text-accent: var(--red);
+  --text-accent-hover: var(--orange);
+  --text-on-accent: #fbf1c7;
+  --text-error: var(--red);
+  --text-warning: var(--orange);
+  --text-success: var(--green);
+  --text-selection: rgba(var(--yellow-rgb), 0.3);
+  --text-highlight-bg: rgba(var(--yellow-rgb), 0.4);
+
+  /* Interactive elements */
+  --interactive-normal: #f2e5bc;
+  --interactive-hover: rgba(var(--yellow-rgb), 0.2);
+  --interactive-accent: var(--red);
+  --interactive-accent-hover: var(--orange);
+
+  /* UI elements */
+  --titlebar-background: var(--background-secondary);
+  --titlebar-background-focused: var(--background-secondary);
+  --titlebar-text-color-focused: var(--text-normal);
+  --ribbon-background: var(--background-secondary);
+  --tab-background-active: var(--background-primary);
+  --tab-text-color-active: var(--text-normal);
+  --tab-text-color-focused-active: var(--text-accent);
+
+  /* Dividers and borders */
+  --divider-color: rgba(var(--gray-rgb), 0.2);
+  --divider-color-hover: rgba(var(--gray-rgb), 0.3);
+}
+
+/* Dark theme - Gruvbox-inspired dark */
+.theme-dark {
+  /* Backgrounds */
+  --background-primary: var(--bg-primary);
+  --background-secondary: var(--bg-secondary);
+  --background-secondary-alt: var(--bg-tertiary);
+  --background-modifier-hover: rgba(var(--yellow-rgb), 0.08);
+  --background-modifier-active-hover: rgba(var(--yellow-rgb), 0.12);
+  --background-modifier-border: rgba(var(--gray-rgb), 0.2);
+  --background-modifier-border-hover: rgba(var(--gray-rgb), 0.3);
+  --background-modifier-border-focus: var(--yellow);
+  --background-modifier-form-field: var(--bg-tertiary);
+  --background-modifier-cover: rgba(29, 32, 33, 0.8);
+
+  /* Text colors */
+  --text-normal: var(--fg-primary);
+  --text-muted: var(--fg-secondary);
+  --text-faint: var(--fg-tertiary);
+  --text-accent: var(--yellow);
+  --text-accent-hover: var(--orange);
+  --text-on-accent: var(--bg-primary);
+  --text-error: var(--red);
+  --text-warning: var(--orange);
+  --text-success: var(--green);
+  --text-selection: rgba(var(--yellow-rgb), 0.2);
+  --text-highlight-bg: rgba(var(--yellow-rgb), 0.3);
+
+  /* Interactive elements */
+  --interactive-normal: var(--bg-tertiary);
+  --interactive-hover: rgba(var(--yellow-rgb), 0.1);
+  --interactive-accent: var(--yellow);
+  --interactive-accent-hover: var(--orange);
+
+  /* UI elements */
+  --titlebar-background: var(--bg-primary);
+  --titlebar-background-focused: var(--bg-primary);
+  --titlebar-text-color-focused: var(--fg-primary);
+  --ribbon-background: var(--bg-secondary);
+  --tab-background-active: var(--bg-tertiary);
+  --tab-text-color-active: var(--fg-primary);
+  --tab-text-color-focused-active: var(--yellow);
+
+  /* Dividers and borders */
+  --divider-color: rgba(var(--gray-rgb), 0.2);
+  --divider-color-hover: rgba(var(--gray-rgb), 0.3);
+}
+
+/* ================================================================
+   GLOBAL STYLING
+   ================================================================ */
+
+/* Body and base typography */
+body {
+  font-family: var(--font-text) !important;
+  font-size: var(--font-text-size);
+  line-height: 1.5;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  position: relative;
+}
+
+/* Scanlines overlay for authentic CRT effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 0px,
+    rgba(0, 255, 0, 0.03) 1px,
+    transparent 2px
+  );
+  background-size: 100% 2px;
+  pointer-events: none;
+  z-index: 1000;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}
+
+/* Subtle screen flicker */
+.workspace {
+  animation: flicker 3s infinite alternate;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.98;
+  }
+  99% {
+    opacity: 1;
+  }
+}
+
+/* Retro glow effect for main content */
+.workspace-leaf-content {
+  box-shadow: inset 0 0 20px rgba(var(--yellow-rgb), 0.1),
+    0 0 20px rgba(var(--yellow-rgb), 0.05);
+}
+
+/* ================================================================
+   TYPOGRAPHY
+   ================================================================ */
+
+/* Headings with subtle retro styling */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-interface) !important;
+  font-weight: 400 !important;
+  color: var(--text-accent);
+  letter-spacing: 0.02em;
+  margin: 1.5em 0 0.5em 0;
+  text-shadow: 0 0 10px currentColor;
+  position: relative;
+}
+
+/* Retro underline effect for headings */
+h1::after,
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, currentColor 0%, transparent 100%);
+  box-shadow: 0 0 5px currentColor;
+}
+
+h1 {
+  font-size: calc(var(--font-text-size) * 2);
+  color: var(--yellow);
+}
+
+h2 {
+  font-size: calc(var(--font-text-size) * 1.6);
+  color: var(--yellow);
+}
+
+h3 {
+  font-size: calc(var(--font-text-size) * 1.4);
+  color: var(--orange);
+}
+
+h4 {
+  font-size: calc(var(--font-text-size) * 1.2);
+  color: var(--blue);
+}
+
+h5,
+h6 {
+  font-size: calc(var(--font-text-size) * 1.1);
+  color: var(--text-muted);
+}
+
+/* Paragraph text */
+p {
+  margin: 0.8em 0;
+  line-height: 1.5;
+}
+
+/* Emphasis and strong text */
+em {
+  color: var(--orange);
+  font-style: italic;
+  text-shadow: 0 0 5px currentColor;
+}
+
+strong {
+  color: var(--text-accent);
+  font-weight: bold;
+  font-family: var(--font-interface);
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* ================================================================
+   LINKS
+   ================================================================ */
+
+a {
+  color: var(--text-accent);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 0 0 5px transparent;
+}
+
+a:hover {
+  color: var(--text-accent-hover);
+  text-shadow: 0 0 8px currentColor;
+}
+
+/* Retro link hover effect */
+a::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 3px currentColor;
+}
+
+a:hover::before {
+  width: 100%;
+}
+
+/* Internal links */
+.internal-link {
+  color: var(--blue);
+  position: relative;
+}
+
+.internal-link:hover {
+  color: var(--text-accent);
+}
+
+.internal-link::after {
+  content: " [LINK]";
+  font-family: var(--font-terminal);
+  font-size: 0.7em;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.internal-link:hover::after {
+  opacity: 1;
+}
+
+/* External links */
+.external-link {
+  color: var(--purple);
+  position: relative;
+}
+
+.external-link:hover {
+  color: var(--text-accent);
+}
+
+.external-link::after {
+  content: " [EXT]";
+  font-family: var(--font-terminal);
+  font-size: 0.7em;
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.external-link:hover::after {
+  opacity: 1;
+}
+
+/* ================================================================
+   CODE AND PREFORMATTED TEXT - RETRO TERMINAL STYLING
+   ================================================================ */
+
+/* Add monospace font variable */
+body {
+  --font-monospace: var(--font-terminal);
+  --font-heading: var(--font-interface);
+}
+
+/* ========================================
+   INLINE CODE STYLING
+   ======================================== */
+
+/* Base inline code styling */
+.markdown-rendered code,
+.markdown-preview-view code,
+.cm-s-obsidian .cm-inline-code,
+code {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--green-rgb), 0.1) 0%,
+    rgba(var(--green-rgb), 0.15) 50%,
+    rgba(var(--green-rgb), 0.08) 100%
+  ) !important;
+  color: var(--green) !important;
+  border: 1px solid rgba(var(--green-rgb), 0.3) !important;
+  border-radius: 3px !important;
+  padding: 2px 6px !important;
+  margin: 0 2px !important;
+  font-family: var(--font-monospace) !important;
+  font-size: 0.9em !important;
+  position: relative !important;
+  display: inline !important;
+  vertical-align: baseline !important;
+
+  /* Subtle terminal glow */
+  text-shadow: 0 0 2px rgba(var(--green-rgb), 0.4) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 3px rgba(var(--green-rgb), 0.2) !important;
+}
+
+/* Terminal accent for inline code */
+.markdown-rendered code::before {
+  content: "▸" !important;
+  color: rgba(var(--green-rgb), 0.6) !important;
+  font-size: 0.7em !important;
+  margin-right: 2px !important;
+  opacity: 0.8 !important;
+}
+
+/* Hover effect for inline code */
+.markdown-rendered code:hover,
+code:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--green-rgb), 0.15) 0%,
+    rgba(var(--green-rgb), 0.25) 50%,
+    rgba(var(--green-rgb), 0.12) 100%
+  ) !important;
+  border-color: rgba(var(--green-rgb), 0.5) !important;
+  text-shadow: 0 0 4px rgba(var(--green-rgb), 0.6) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 6px rgba(var(--green-rgb), 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* ========================================
+   CODE BLOCK STYLING
+   ======================================== */
+
+/* Main code block container */
+.markdown-rendered pre,
+.markdown-preview-view pre,
+.cm-s-obsidian .HyperMD-codeblock,
+pre {
+  position: relative !important;
+  background: linear-gradient(
+    145deg,
+    rgba(var(--green-rgb), 0.05) 0%,
+    rgba(0, 0, 0, 0.6) 20%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(var(--green-rgb), 0.03) 100%
+  ) !important;
+  border: 2px solid rgba(var(--green-rgb), 0.4) !important;
+  border-radius: 6px !important;
+  margin: 1.5rem 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+
+  /* Terminal screen effect */
+  box-shadow: inset 0 0 20px rgba(var(--green-rgb), 0.1),
+    inset 0 0 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--green-rgb), 0.2),
+    0 0 30px rgba(var(--green-rgb), 0.1) !important;
+}
+
+/* Code block content */
+.markdown-rendered pre code,
+.markdown-preview-view pre code,
+pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 1.2rem 1.5rem !important;
+  margin: 0 !important;
+  display: block !important;
+  color: var(--green) !important;
+  font-family: var(--font-monospace) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+  overflow-x: auto !important;
+  white-space: pre !important;
+
+  /* Terminal phosphor glow */
+  text-shadow: 0 0 2px rgba(var(--green-rgb), 0.6),
+    0 0 4px rgba(var(--green-rgb), 0.3) !important;
+
+  /* Filter for authentic CRT look */
+  filter: contrast(1.1) brightness(1.05) !important;
+}
+
+/* Remove inline code styling from code blocks */
+.markdown-rendered pre code::before {
+  content: unset !important;
+}
+
+/* ========================================
+   TERMINAL HEADER STYLING
+   ======================================== */
+
+/* Terminal header bar */
+.markdown-rendered pre::before,
+pre::before {
+  content: "▓▒░ TERMINAL ░▒▓" !important;
+  position: absolute !important;
+  top: -2px !important;
+  left: -2px !important;
+  right: -2px !important;
+  height: 28px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--green-rgb), 0.8) 0%,
+    rgba(var(--green-rgb), 0.6) 30%,
+    rgba(var(--green-rgb), 0.4) 70%,
+    rgba(var(--green-rgb), 0.6) 100%
+  ) !important;
+  border-radius: 6px 6px 0 0 !important;
+  border-bottom: 1px solid rgba(var(--green-rgb), 0.5) !important;
+
+  /* Header text styling */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.7rem !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  text-shadow: 0 0 2px rgba(var(--green-rgb), 0.8) !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  z-index: 2 !important;
+}
+
+/* Terminal control buttons */
+.markdown-rendered pre::after,
+pre::after {
+  content: "●●●" !important;
+  position: absolute !important;
+  top: 6px !important;
+  right: 12px !important;
+  font-size: 8px !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  letter-spacing: 2px !important;
+  z-index: 3 !important;
+  text-shadow: none !important;
+}
+
+/* Adjust code content positioning for header */
+.markdown-rendered pre code,
+pre code {
+  margin-top: 28px !important;
+  border-top: 1px solid rgba(var(--green-rgb), 0.3) !important;
+}
+
+/* ========================================
+   SCANLINE EFFECTS FOR CODE BLOCKS
+   ======================================== */
+
+/* Scanlines overlay for code blocks */
+.markdown-rendered pre,
+pre {
+  overflow: hidden !important;
+}
+
+.markdown-rendered pre code::after,
+pre code::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 28px !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(var(--green-rgb), 0.02) 2px,
+    rgba(var(--green-rgb), 0.02) 4px
+  ) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  opacity: 0.6 !important;
+  animation: terminal-scanlines 0.1s linear infinite !important;
+}
+
+/* ========================================
+   LANGUAGE-SPECIFIC STYLING
+   ======================================== */
+
+/* JavaScript/TypeScript - Blue accent */
+.markdown-rendered pre[class*="language-js"] code,
+.markdown-rendered pre[class*="language-javascript"] code,
+.markdown-rendered pre[class*="language-ts"] code,
+.markdown-rendered pre[class*="language-typescript"] code {
+  color: var(--blue) !important;
+  text-shadow: 0 0 2px rgba(var(--blue-rgb), 0.6),
+    0 0 4px rgba(var(--blue-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-js"]::before,
+.markdown-rendered pre[class*="language-javascript"]::before {
+  content: "▓▒░ JAVASCRIPT ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--blue-rgb), 0.8) 0%,
+    rgba(var(--blue-rgb), 0.6) 30%,
+    rgba(var(--blue-rgb), 0.4) 70%,
+    rgba(var(--blue-rgb), 0.6) 100%
+  ) !important;
+}
+
+.markdown-rendered pre[class*="language-ts"]::before,
+.markdown-rendered pre[class*="language-typescript"]::before {
+  content: "▓▒░ TYPESCRIPT ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--blue-rgb), 0.8) 0%,
+    rgba(var(--blue-rgb), 0.6) 30%,
+    rgba(var(--blue-rgb), 0.4) 70%,
+    rgba(var(--blue-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* Python - Yellow accent */
+.markdown-rendered pre[class*="language-python"] code,
+.markdown-rendered pre[class*="language-py"] code {
+  color: var(--yellow) !important;
+  text-shadow: 0 0 2px rgba(var(--yellow-rgb), 0.6),
+    0 0 4px rgba(var(--yellow-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-python"]::before,
+.markdown-rendered pre[class*="language-py"]::before {
+  content: "▓▒░ PYTHON ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.8) 0%,
+    rgba(var(--yellow-rgb), 0.6) 30%,
+    rgba(var(--yellow-rgb), 0.4) 70%,
+    rgba(var(--yellow-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* CSS - Purple accent */
+.markdown-rendered pre[class*="language-css"] code {
+  color: var(--purple) !important;
+  text-shadow: 0 0 2px rgba(var(--purple-rgb), 0.6),
+    0 0 4px rgba(var(--purple-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-css"]::before {
+  content: "▓▒░ CSS ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--purple-rgb), 0.8) 0%,
+    rgba(var(--purple-rgb), 0.6) 30%,
+    rgba(var(--purple-rgb), 0.4) 70%,
+    rgba(var(--purple-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* HTML - Orange accent */
+.markdown-rendered pre[class*="language-html"] code {
+  color: var(--orange) !important;
+  text-shadow: 0 0 2px rgba(var(--orange-rgb), 0.6),
+    0 0 4px rgba(var(--orange-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-html"]::before {
+  content: "▓▒░ HTML ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--orange-rgb), 0.8) 0%,
+    rgba(var(--orange-rgb), 0.6) 30%,
+    rgba(var(--orange-rgb), 0.4) 70%,
+    rgba(var(--orange-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* JSON - Gray accent */
+.markdown-rendered pre[class*="language-json"] code {
+  color: var(--gray) !important;
+  text-shadow: 0 0 2px rgba(var(--gray-rgb), 0.6),
+    0 0 4px rgba(var(--gray-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-json"]::before {
+  content: "▓▒░ JSON ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--gray-rgb), 0.8) 0%,
+    rgba(var(--gray-rgb), 0.6) 30%,
+    rgba(var(--gray-rgb), 0.4) 70%,
+    rgba(var(--gray-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* Bash/Shell - Red accent */
+.markdown-rendered pre[class*="language-bash"] code,
+.markdown-rendered pre[class*="language-shell"] code,
+.markdown-rendered pre[class*="language-sh"] code {
+  color: var(--red) !important;
+  text-shadow: 0 0 2px rgba(var(--red-rgb), 0.6),
+    0 0 4px rgba(var(--red-rgb), 0.3) !important;
+}
+
+.markdown-rendered pre[class*="language-bash"]::before,
+.markdown-rendered pre[class*="language-shell"]::before,
+.markdown-rendered pre[class*="language-sh"]::before {
+  content: "▓▒░ SHELL ░▒▓" !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--red-rgb), 0.8) 0%,
+    rgba(var(--red-rgb), 0.6) 30%,
+    rgba(var(--red-rgb), 0.4) 70%,
+    rgba(var(--red-rgb), 0.6) 100%
+  ) !important;
+}
+
+/* ========================================
+   COPY BUTTON STYLING
+   ======================================== */
+
+/* Style copy button if present */
+.markdown-rendered pre .copy-code-button,
+.copy-code-button {
+  position: absolute !important;
+  top: 4px !important;
+  right: 40px !important;
+  background: rgba(var(--green-rgb), 0.2) !important;
+  border: 1px solid rgba(var(--green-rgb), 0.4) !important;
+  border-radius: 3px !important;
+  padding: 4px 8px !important;
+  font-size: 0.7rem !important;
+  color: var(--green) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  z-index: 4 !important;
+  font-family: var(--font-heading) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+.markdown-rendered pre .copy-code-button:hover,
+.copy-code-button:hover {
+  background: rgba(var(--green-rgb), 0.3) !important;
+  border-color: rgba(var(--green-rgb), 0.6) !important;
+  box-shadow: 0 0 6px rgba(var(--green-rgb), 0.4) !important;
+}
+
+/* ========================================
+   SPECIAL EFFECTS & ANIMATIONS
+   ======================================== */
+
+/* Terminal cursor effect */
+.markdown-rendered pre code,
+pre code {
+  position: relative !important;
+}
+
+/* Blinking cursor animation */
+@keyframes terminal-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Scanline flicker animation */
+@keyframes terminal-scanlines {
+  0% {
+    opacity: 0.6;
+  }
+  2% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.6;
+  }
+  96% {
+    opacity: 0.6;
+  }
+  98% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Data stream animation for code blocks */
+.markdown-rendered pre,
+pre {
+  animation: code-block-glow 6s ease-in-out infinite alternate !important;
+}
+
+@keyframes code-block-glow {
+  0% {
+    box-shadow: inset 0 0 20px rgba(var(--green-rgb), 0.1),
+      inset 0 0 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(var(--green-rgb), 0.2),
+      0 0 30px rgba(var(--green-rgb), 0.1);
+  }
+  100% {
+    box-shadow: inset 0 0 20px rgba(var(--green-rgb), 0.15),
+      inset 0 0 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(var(--green-rgb), 0.3),
+      0 0 40px rgba(var(--green-rgb), 0.15);
+  }
+}
+
+/* ========================================
+   MATH BLOCKS
+   ======================================== */
+
+/* Style math blocks with purple accent */
+.markdown-rendered .math-block,
+.math-block {
+  background: linear-gradient(
+    145deg,
+    rgba(var(--purple-rgb), 0.05) 0%,
+    rgba(0, 0, 0, 0.6) 20%,
+    rgba(0, 0, 0, 0.8) 80%,
+    rgba(var(--purple-rgb), 0.03) 100%
+  ) !important;
+  border: 2px solid rgba(var(--purple-rgb), 0.4) !important;
+  border-radius: 6px !important;
+  padding: 1rem !important;
+  margin: 1.5rem 0 !important;
+  color: var(--purple) !important;
+  text-shadow: 0 0 2px rgba(var(--purple-rgb), 0.6) !important;
+  box-shadow: inset 0 0 20px rgba(var(--purple-rgb), 0.1),
+    0 0 15px rgba(var(--purple-rgb), 0.2) !important;
+}
+
+.markdown-rendered .math-block::before,
+.math-block::before {
+  content: "▓▒░ MATHEMATICS ░▒▓" !important;
+  display: block !important;
+  text-align: center !important;
+  font-family: var(--font-heading) !important;
+  font-size: 0.7rem !important;
+  color: rgba(var(--purple-rgb), 0.8) !important;
+  margin-bottom: 0.5rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+}
+
+/* ========================================
+   EDITOR MODE COMPATIBILITY & RESET
+   ======================================== */
+
+/* Reset edit mode to default styling */
+.cm-s-obsidian .HyperMD-codeblock-begin,
+.cm-s-obsidian .HyperMD-codeblock-end {
+  color: var(--text-muted) !important;
+  font-family: var(--font-text) !important;
+  background: transparent !important;
+}
+
+.cm-s-obsidian .HyperMD-codeblock {
+  background: var(--background-secondary) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  border-radius: 4px !important;
+}
+
+/* Reset editor code to clean styling */
+.cm-s-obsidian .cm-inline-code {
+  background: var(--background-modifier-form-field) !important;
+  color: var(--text-accent) !important;
+  border: none !important;
+  padding: 1px 3px !important;
+  font-family: var(--font-text) !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .markdown-rendered pre,
+  pre {
+    margin: 1rem 0 !important;
+  }
+
+  .markdown-rendered pre code,
+  pre code {
+    padding: 1rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .markdown-rendered pre::before,
+  pre::before {
+    font-size: 0.6rem !important;
+    height: 24px !important;
+  }
+
+  .markdown-rendered pre code,
+  pre code {
+    margin-top: 24px !important;
+  }
+
+  .markdown-rendered pre code::after,
+  pre code::after {
+    top: 24px !important;
+  }
+}
+
+/* ================================================================
+   LISTS
+   ================================================================ */
+
+ul,
+ol {
+  padding-left: 1.5em;
+  margin: 0.8em 0;
+}
+
+li {
+  margin: 0.3em 0;
+  position: relative;
+}
+
+/* Custom bullet points */
+ul li::marker {
+  content: "► ";
+  color: var(--text-accent);
+}
+
+ol li::marker {
+  color: var(--text-accent);
+  font-weight: normal;
+}
+
+/* Nested lists */
+ul ul li::marker {
+  content: "▪ ";
+}
+
+ul ul ul li::marker {
+  content: "▫ ";
+}
+
+/* ================================================================
+   BLOCKQUOTES
+   ================================================================ */
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--yellow);
+  background: rgba(var(--yellow-rgb), 0.05);
+  margin: 1em 0;
+  padding: var(--padding);
+  font-style: italic;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
+    0 0 5px rgba(var(--yellow-rgb), 0.2);
+}
+
+blockquote::before {
+  content: "▶ QUOTE";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  background: var(--background-primary);
+  color: var(--yellow);
+  font-family: var(--font-terminal);
+  font-size: 0.8em;
+  font-style: normal;
+  padding: 0 8px;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* ================================================================
+   TABLES
+   ================================================================ */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+}
+
+th,
+td {
+  border: 1px solid var(--background-modifier-border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background: rgba(var(--yellow-rgb), 0.1);
+  color: var(--text-accent);
+  font-weight: normal;
+}
+
+tr:nth-child(even) {
+  background: rgba(var(--yellow-rgb), 0.03);
+}
+
+tr:hover {
+  background: rgba(var(--yellow-rgb), 0.08);
+}
+
+/* ================================================================
+   UI ELEMENTS
+   ================================================================ */
+
+/* Workspace */
+.workspace {
+  background: var(--background-primary);
+}
+
+/* Titlebar */
+.titlebar {
+  background: var(--titlebar-background);
+  border-bottom: 2px solid var(--divider-color);
+  position: relative;
+}
+
+.titlebar::before {
+  content: "OBSIDIAN TERMINAL v2.1.47";
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  font-family: var(--font-terminal);
+  font-size: 10px;
+  color: var(--text-muted);
+  text-shadow: 0 0 3px currentColor;
+}
+
+/* Ribbon/sidebar */
+.side-dock-ribbon {
+  background: var(--ribbon-background);
+  border-right: 1px solid var(--divider-color);
+  position: relative;
+  box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.side-dock-ribbon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  /* background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--yellow) 20%,
+    var(--yellow) 80%,
+    transparent 100%
+  ); */
+  /* box-shadow: 0 0 5px var(--yellow); */
+  /* animation: pulse 2s ease-in-out infinite; */
+}
+
+/* @keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+} */
+
+.side-dock-ribbon-tab {
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.side-dock-ribbon-tab:hover,
+.side-dock-ribbon-tab.is-active {
+  color: var(--text-accent);
+}
+
+/* Tabs */
+.workspace-tab-header {
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.workspace-tab-header-inner {
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner {
+  color: var(--text-accent);
+}
+
+/* Status bar */
+.status-bar {
+  background: var(--background-secondary);
+  border-top: 1px solid var(--divider-color);
+  color: var(--text-muted);
+  font-family: var(--font-terminal);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.5),
+    0 0 10px rgba(var(--yellow-rgb), 0.1);
+}
+
+.status-bar::before {
+  content: "STATUS: ONLINE | CPU: 47% | MEM: 68% | ";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--green);
+  font-size: 10px;
+  text-shadow: 0 0 3px currentColor;
+}
+
+/* Buttons */
+button {
+  background: var(--interactive-normal);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  font-family: var(--font-interface);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--yellow-rgb), 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  background: var(--interactive-hover);
+  border-color: var(--background-modifier-border-hover);
+  box-shadow: 0 0 10px rgba(var(--yellow-rgb), 0.3),
+    inset 0 0 10px rgba(var(--yellow-rgb), 0.1);
+  text-shadow: 0 0 5px currentColor;
+}
+
+button:active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  transform: scale(0.98);
+}
+
+/* Input fields */
+input,
+textarea,
+select {
+  background: var(--background-modifier-form-field);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  font-family: var(--font-terminal);
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--background-modifier-border-focus);
+  outline: none;
+}
+
+/* ================================================================
+   SCROLLBARS
+   ================================================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--yellow-rgb), 0.5) 0%,
+    rgba(var(--orange-rgb), 0.5) 50%,
+    rgba(var(--red-rgb), 0.5) 100%
+  );
+  border-radius: 6px;
+  border: 2px solid var(--background-primary);
+  box-shadow: inset 0 0 5px rgba(var(--yellow-rgb), 0.5),
+    0 0 5px rgba(var(--yellow-rgb), 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--gray-rgb), 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background-primary);
+}
+
+/* ================================================================
+   CALLOUTS AND SPECIAL ELEMENTS
+   ================================================================ */
+
+/* Callout boxes with subtle styling */
+.callout {
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  border-radius: var(--border-radius);
+  margin: 1em 0;
+  padding: 0;
+}
+
+.callout-title {
+  background: rgba(var(--yellow-rgb), 0.1);
+  color: var(--text-accent);
+  padding: 8px var(--padding);
+  font-weight: normal;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.callout-content {
+  padding: var(--padding);
+}
+
+/* Different callout types */
+.callout[data-callout="info"] {
+  border-color: rgba(var(--blue-rgb), 0.3);
+}
+
+.callout[data-callout="warning"] {
+  border-color: rgba(var(--orange-rgb), 0.3);
+}
+
+.callout[data-callout="error"] {
+  border-color: rgba(var(--red-rgb), 0.3);
+}
+
+.callout[data-callout="success"] {
+  border-color: rgba(var(--green-rgb), 0.3);
+}
+
+/* ================================================================
+   MOBILE RESPONSIVENESS
+   ================================================================ */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .workspace-split.mod-vertical {
+    --padding: 8px;
+  }
+}
+
+/* ================================================================
+   HIGH CONTRAST MODE
+   ================================================================ */
+
+@media (prefers-contrast: high) {
+  .theme-light {
+    --text-normal: #000000;
+    --background-primary: #ffffff;
+  }
+
+  .theme-dark {
+    --text-normal: #ffffff;
+    --background-primary: #000000;
+  }
+}
+
+/* ================================================================
+   REDUCED MOTION
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================
+   PRINT STYLES
+   ================================================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+}
+
+/* ================================================================
+   RETRO-FUTURISTIC ENHANCEMENTS
+   ================================================================ */
+
+/* Terminal cursor effect for text inputs */
+input[type="text"]:focus,
+textarea:focus {
+  position: relative;
+}
+
+input[type="text"]:focus::after,
+textarea:focus::after {
+  content: "█";
+  color: var(--yellow);
+  animation: blink 1s infinite;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Holographic data panels */
+.workspace-leaf {
+  background: var(--background-primary);
+  border: 1px solid rgba(var(--blue-rgb), 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.workspace-leaf::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--blue) 20%,
+    var(--yellow) 50%,
+    var(--blue) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 5px currentColor;
+  animation: dataStream 3s linear infinite;
+}
+
+@keyframes dataStream {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Grid overlay for that terminal aesthetic */
+.markdown-source-view,
+.markdown-preview-view {
+  position: relative;
+}
+
+.markdown-source-view::before,
+.markdown-preview-view::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      rgba(var(--green-rgb), 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(var(--green-rgb), 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Retro console-style selection */
+::selection {
+  background: rgba(var(--yellow-rgb), 0.3);
+  color: var(--bg-primary);
+  text-shadow: 0 0 5px var(--yellow);
+}
+
+/* Enhanced scrollbar with retro styling */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--yellow-rgb), 0.5) 0%,
+    rgba(var(--orange-rgb), 0.5) 50%,
+    rgba(var(--red-rgb), 0.5) 100%
+  );
+  border-radius: 6px;
+  border: 2px solid var(--background-primary);
+  box-shadow: inset 0 0 5px rgba(var(--yellow-rgb), 0.5),
+    0 0 5px rgba(var(--yellow-rgb), 0.3);
+}
+
+/* Terminal-style tags */
+.tag {
+  background: rgba(var(--green-rgb), 0.1) !important;
+  color: var(--green) !important;
+  border: 1px solid rgba(var(--green-rgb), 0.3) !important;
+  font-family: var(--font-terminal) !important;
+  text-transform: uppercase;
+  font-size: 0.8em !important;
+  padding: 2px 6px !important;
+  text-shadow: 0 0 3px currentColor;
+}
+
+.tag::before {
+  content: "#";
+  color: var(--text-muted);
+}
+
+/* Retro search highlights */
+.search-result-file-match {
+  background: rgba(var(--yellow-rgb), 0.2) !important;
+  border-left: 3px solid var(--yellow) !important;
+  box-shadow: 0 0 10px rgba(var(--yellow-rgb), 0.3);
+}
+
+/* Command palette with terminal styling */
+.prompt {
+  background: var(--background-secondary) !important;
+  border: 2px solid var(--yellow) !important;
+  box-shadow: 0 0 20px rgba(var(--yellow-rgb), 0.5),
+    inset 0 0 20px rgba(var(--yellow-rgb), 0.1);
+}
+
+.prompt::before {
+  content: "CMD>";
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  color: var(--yellow);
+  font-family: var(--font-terminal);
+  font-size: 12px;
+  text-shadow: 0 0 5px currentColor;
+}
+
+/* File tree with retro styling */
+.nav-file-title,
+.nav-folder-title {
+  font-family: var(--font-interface);
+  position: relative;
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  background: rgba(var(--yellow-rgb), 0.1);
+  box-shadow: inset 3px 0 0 var(--yellow);
+  text-shadow: 0 0 5px var(--yellow);
+}
+
+.nav-folder-title::before {
+  content: "[/] ";
+  color: var(--blue);
+  font-family: var(--font-terminal);
+  font-size: 0.8em;
+}
+
+.nav-file-title::before {
+  content: "[.] ";
+  color: var(--green);
+  font-family: var(--font-terminal);
+  font-size: 0.8em;
+}
+
+/* Retro loading animation */
+.progress-bar {
+  background: var(--background-secondary);
+  border: 1px solid var(--yellow);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--yellow) 50%,
+    transparent 100%
+  );
+  animation: loading 2s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Terminal startup message */
+.workspace::after {
+  content: "WEYLAND-YUTANI CORP SYSTEMS ONLINE\ATERMINAL ACCESS GRANTED\AUSER: RIPLEY_E\ASECURITY LEVEL: 7\A\AINITIATING OBSIDIAN INTERFACE...";
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: var(--green);
+  font-family: var(--font-terminal);
+  font-size: 10px;
+  white-space: pre;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  text-shadow: 0 0 5px currentColor;
+  animation: bootSequence 4s ease-out forwards;
+}
+
+@keyframes bootSequence {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* CRT monitor curvature effect (subtle) */
+.workspace-split.mod-root {
+  border-radius: 0 0 5px 5px;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(var(--yellow-rgb), 0.1);
+}
+
+/* ================================================================
+   PRINT STYLES
+   ================================================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  * {
+    box-shadow: none !important;
+  }
+}
