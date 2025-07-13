@@ -48,6 +48,21 @@ body {
   --fg-secondary: #d5c4a1;
   --fg-tertiary: #bdae93;
 
+  /* Callout type colors using our theme palette */
+  --callout-color-note: var(--blue-rgb);
+  --callout-color-abstract: var(--purple-rgb);
+  --callout-color-info: var(--blue-rgb);
+  --callout-color-todo: var(--gray-rgb);
+  --callout-color-tip: var(--green-rgb);
+  --callout-color-success: var(--green-rgb);
+  --callout-color-question: var(--yellow-rgb);
+  --callout-color-warning: var(--orange-rgb);
+  --callout-color-failure: var(--red-rgb);
+  --callout-color-danger: var(--red-rgb);
+  --callout-color-bug: var(--red-rgb);
+  --callout-color-example: var(--purple-rgb);
+  --callout-color-quote: var(--gray-rgb);
+
   /* Typography */
   --font-terminal: "VT323", "Share Tech Mono", "Courier New", monospace;
   --font-interface: "Share Tech Mono", "Courier New", monospace;
@@ -1918,7 +1933,23 @@ select:focus {
   margin: 1.5rem 0;
   overflow: visible;
   animation: subtle-glow 4s ease-in-out infinite alternate;
+  --current-callout-color: var(--blue-rgb); /* Default fallback */
 }
+
+/* Specific callout type color assignments */
+.markdown-rendered .callout[data-callout="note"] { --current-callout-color: var(--callout-color-note); }
+.markdown-rendered .callout[data-callout="abstract"] { --current-callout-color: var(--callout-color-abstract); }
+.markdown-rendered .callout[data-callout="info"] { --current-callout-color: var(--callout-color-info); }
+.markdown-rendered .callout[data-callout="todo"] { --current-callout-color: var(--callout-color-todo); }
+.markdown-rendered .callout[data-callout="tip"] { --current-callout-color: var(--callout-color-tip); }
+.markdown-rendered .callout[data-callout="success"] { --current-callout-color: var(--callout-color-success); }
+.markdown-rendered .callout[data-callout="question"] { --current-callout-color: var(--callout-color-question); }
+.markdown-rendered .callout[data-callout="warning"] { --current-callout-color: var(--callout-color-warning); }
+.markdown-rendered .callout[data-callout="failure"] { --current-callout-color: var(--callout-color-failure); }
+.markdown-rendered .callout[data-callout="danger"] { --current-callout-color: var(--callout-color-danger); }
+.markdown-rendered .callout[data-callout="bug"] { --current-callout-color: var(--callout-color-bug); }
+.markdown-rendered .callout[data-callout="example"] { --current-callout-color: var(--callout-color-example); }
+.markdown-rendered .callout[data-callout="quote"] { --current-callout-color: var(--callout-color-quote); }
 
 /* Main callout container with gradient border effect */
 .markdown-rendered .callout::before {
@@ -1930,11 +1961,11 @@ select:focus {
   bottom: -2px;
   background: linear-gradient(
     135deg,
-    rgba(var(--callout-color), 1) 0%,
-    rgba(var(--callout-color), 0.8) 25%,
-    rgba(var(--callout-color), 0.4) 50%,
-    rgba(var(--callout-color), 0.2) 75%,
-    rgba(var(--callout-color), 0.1) 100%
+    rgba(var(--current-callout-color), 1) 0%,
+    rgba(var(--current-callout-color), 0.8) 25%,
+    rgba(var(--current-callout-color), 0.4) 50%,
+    rgba(var(--current-callout-color), 0.2) 75%,
+    rgba(var(--current-callout-color), 0.1) 100%
   );
   z-index: -1;
   border-radius: 4px;
@@ -1960,11 +1991,11 @@ select:focus {
 .markdown-rendered .callout-title {
   background: linear-gradient(
     90deg,
-    rgba(var(--callout-color), 0.3) 0%,
-    rgba(var(--callout-color), 0.15) 50%,
-    rgba(var(--callout-color), 0.05) 100%
+    rgba(var(--current-callout-color), 0.3) 0%,
+    rgba(var(--current-callout-color), 0.15) 50%,
+    rgba(var(--current-callout-color), 0.05) 100%
   );
-  border-bottom: 1px solid rgba(var(--callout-color), 0.4);
+  border-bottom: 1px solid rgba(var(--current-callout-color), 0.4);
   padding: 0.75rem 1rem;
   margin: 0;
   font-family: var(--font-interface);
@@ -1983,7 +2014,7 @@ select:focus {
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
-  color: rgba(var(--callout-color), 0.4);
+  color: rgba(var(--current-callout-color), 0.4);
   font-size: 0.8rem;
   letter-spacing: 0.2em;
   pointer-events: none;
@@ -2002,7 +2033,7 @@ select:focus {
     90deg,
     transparent 0%,
     transparent 45%,
-    rgba(var(--callout-color), 0.8) 50%,
+    rgba(var(--current-callout-color), 0.8) 50%,
     transparent 55%,
     transparent 100%
   );
@@ -2012,8 +2043,8 @@ select:focus {
 
 /* Icon styling */
 .markdown-rendered .callout-icon {
-  color: rgba(var(--callout-color), 1);
-  filter: drop-shadow(0 0 4px rgba(var(--callout-color), 0.5));
+  color: rgba(var(--current-callout-color), 1);
+  filter: drop-shadow(0 0 4px rgba(var(--current-callout-color), 0.5));
 }
 
 /* Content area with subtle block pattern */
@@ -2021,7 +2052,7 @@ select:focus {
   padding: 1rem;
   background: linear-gradient(
     180deg,
-    rgba(var(--callout-color), 0.02) 0%,
+    rgba(var(--current-callout-color), 0.02) 0%,
     transparent 30%
   );
   position: relative;
@@ -2037,7 +2068,7 @@ select:focus {
   bottom: 0;
   background-image: radial-gradient(
     circle at 50% 50%,
-    rgba(var(--callout-color), 0.02) 1px,
+    rgba(var(--current-callout-color), 0.02) 1px,
     transparent 1px
   );
   background-size: 20px 20px;
@@ -2051,7 +2082,7 @@ select:focus {
   position: absolute;
   bottom: 0.5rem;
   right: 1rem;
-  color: rgba(var(--callout-color), 0.1);
+  color: rgba(var(--current-callout-color), 0.1);
   font-size: 2rem;
   line-height: 1;
   pointer-events: none;
@@ -2062,7 +2093,7 @@ select:focus {
 .markdown-rendered .callout-title-inner::after {
   content: "▓";
   position: absolute;
-  color: rgba(var(--callout-color), 0.6);
+  color: rgba(var(--current-callout-color), 0.6);
   font-size: 0.6rem;
 }
 
@@ -2080,13 +2111,13 @@ select:focus {
 .markdown-rendered .callout:hover::before {
   background: linear-gradient(
     135deg,
-    rgba(var(--callout-color), 1) 0%,
-    rgba(var(--callout-color), 0.9) 25%,
-    rgba(var(--callout-color), 0.6) 50%,
-    rgba(var(--callout-color), 0.3) 75%,
-    rgba(var(--callout-color), 0.15) 100%
+    rgba(var(--current-callout-color), 1) 0%,
+    rgba(var(--current-callout-color), 0.9) 25%,
+    rgba(var(--current-callout-color), 0.6) 50%,
+    rgba(var(--current-callout-color), 0.3) 75%,
+    rgba(var(--current-callout-color), 0.15) 100%
   );
-  filter: drop-shadow(0 0 8px rgba(var(--callout-color), 0.4));
+  filter: drop-shadow(0 0 8px rgba(var(--current-callout-color), 0.4));
   transition: all 0.3s ease;
 }
 
@@ -2095,11 +2126,11 @@ select:focus {
 .markdown-rendered .callout[data-callout="error"]::before {
   background: linear-gradient(
     135deg,
-    rgba(var(--callout-color), 1) 0%,
-    rgba(var(--callout-color), 0.7) 20%,
-    rgba(var(--callout-color), 0.3) 40%,
-    rgba(var(--callout-color), 0.1) 60%,
-    rgba(var(--callout-color), 0.05) 80%,
+    rgba(var(--current-callout-color), 1) 0%,
+    rgba(var(--current-callout-color), 0.7) 20%,
+    rgba(var(--current-callout-color), 0.3) 40%,
+    rgba(var(--current-callout-color), 0.1) 60%,
+    rgba(var(--current-callout-color), 0.05) 80%,
     transparent 100%
   );
 }
@@ -2191,10 +2222,10 @@ select:focus {
 /* Subtle animation for the whole callout */
 @keyframes subtle-glow {
   0% {
-    filter: drop-shadow(0 0 2px rgba(var(--callout-color), 0.1));
+    filter: drop-shadow(0 0 2px rgba(var(--current-callout-color), 0.1));
   }
   100% {
-    filter: drop-shadow(0 0 4px rgba(var(--callout-color), 0.2));
+    filter: drop-shadow(0 0 4px rgba(var(--current-callout-color), 0.2));
   }
 }
 
