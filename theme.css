@@ -1369,33 +1369,294 @@ ul ul ul li::marker {
 }
 
 /* ================================================================
-   BLOCKQUOTES
+   BLOCKQUOTES - RETRO-FUTURISTIC STYLING
    ================================================================ */
 
-/* Blockquotes */
-blockquote {
-  border-left: 4px solid var(--yellow);
-  background: rgba(var(--yellow-rgb), 0.05);
-  margin: 1em 0;
-  padding: var(--padding);
-  font-style: italic;
+/* Retro-futuristic blockquotes */
+blockquote,
+.markdown-rendered blockquote {
   position: relative;
-  box-shadow: inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
+  border-left: 3px solid rgba(var(--yellow-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.05) 0%,
+    rgba(var(--yellow-rgb), 0.02) 30%,
+    transparent 70%
+  );
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: rgba(var(--text-normal), 0.9);
+  overflow: visible;
+  border-radius: var(--border-radius);
+  box-shadow: 
+    inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
     0 0 5px rgba(var(--yellow-rgb), 0.2);
 }
 
-blockquote::before {
-  content: "▶ QUOTE";
+/* Tech accent for blockquotes */
+blockquote::before,
+.markdown-rendered blockquote::before {
+  content: "▸▸";
   position: absolute;
-  top: -10px;
-  left: 20px;
-  background: var(--background-primary);
-  color: var(--yellow);
-  font-family: var(--font-terminal);
-  font-size: 0.8em;
+  left: -8px;
+  top: 0.5rem;
+  color: rgba(var(--yellow-rgb), 0.6);
+  font-size: 0.8rem;
   font-style: normal;
-  padding: 0 8px;
+  background: var(--background-primary);
+  padding: 0 4px;
+  font-family: var(--font-terminal);
+  text-shadow: 0 0 3px currentColor;
+}
+
+/* Subtle grid pattern overlay */
+blockquote::after,
+.markdown-rendered blockquote::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--yellow-rgb), 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 15px 15px;
+  pointer-events: none;
+  opacity: 0.4;
+  border-radius: var(--border-radius);
+}
+
+/* Hover effects for blockquotes */
+blockquote:hover,
+.markdown-rendered blockquote:hover {
+  border-left-color: rgba(var(--yellow-rgb), 0.8);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.08) 0%,
+    rgba(var(--yellow-rgb), 0.04) 30%,
+    rgba(var(--yellow-rgb), 0.01) 70%
+  );
+  box-shadow: 
+    inset 0 0 15px rgba(var(--yellow-rgb), 0.15),
+    0 0 8px rgba(var(--yellow-rgb), 0.3);
+  transition: all 0.3s ease;
+}
+
+blockquote:hover::before,
+.markdown-rendered blockquote:hover::before {
+  color: rgba(var(--yellow-rgb), 0.9);
   text-shadow: 0 0 5px currentColor;
+  transition: all 0.3s ease;
+}
+
+/* Nested blockquotes */
+blockquote blockquote,
+.markdown-rendered blockquote blockquote {
+  border-left-color: rgba(var(--orange-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--orange-rgb), 0.05) 0%,
+    rgba(var(--orange-rgb), 0.02) 30%,
+    transparent 70%
+  );
+  margin: 1rem 0;
+}
+
+blockquote blockquote::before,
+.markdown-rendered blockquote blockquote::before {
+  content: "▸";
+  color: rgba(var(--orange-rgb), 0.6);
+}
+
+blockquote blockquote::after,
+.markdown-rendered blockquote blockquote::after {
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--orange-rgb), 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Special blockquote types */
+
+/* Info blockquote - add class .info */
+blockquote.info,
+.markdown-rendered blockquote.info {
+  border-left-color: rgba(var(--blue-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--blue-rgb), 0.05) 0%,
+    rgba(var(--blue-rgb), 0.02) 30%,
+    transparent 70%
+  );
+}
+
+blockquote.info::before,
+.markdown-rendered blockquote.info::before {
+  content: "▸ INFO";
+  color: rgba(var(--blue-rgb), 0.8);
+}
+
+blockquote.info::after,
+.markdown-rendered blockquote.info::after {
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--blue-rgb), 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Warning blockquote - add class .warning */
+blockquote.warning,
+.markdown-rendered blockquote.warning {
+  border-left-color: rgba(var(--orange-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--orange-rgb), 0.05) 0%,
+    rgba(var(--orange-rgb), 0.02) 30%,
+    transparent 70%
+  );
+}
+
+blockquote.warning::before,
+.markdown-rendered blockquote.warning::before {
+  content: "⚠ WARNING";
+  color: rgba(var(--orange-rgb), 0.8);
+}
+
+blockquote.warning::after,
+.markdown-rendered blockquote.warning::after {
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--orange-rgb), 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Error blockquote - add class .error */
+blockquote.error,
+.markdown-rendered blockquote.error {
+  border-left-color: rgba(var(--red-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--red-rgb), 0.05) 0%,
+    rgba(var(--red-rgb), 0.02) 30%,
+    transparent 70%
+  );
+}
+
+blockquote.error::before,
+.markdown-rendered blockquote.error::before {
+  content: "✕ ERROR";
+  color: rgba(var(--red-rgb), 0.8);
+}
+
+blockquote.error::after,
+.markdown-rendered blockquote.error::after {
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--red-rgb), 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Success blockquote - add class .success */
+blockquote.success,
+.markdown-rendered blockquote.success {
+  border-left-color: rgba(var(--green-rgb), 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--green-rgb), 0.05) 0%,
+    rgba(var(--green-rgb), 0.02) 30%,
+    transparent 70%
+  );
+}
+
+blockquote.success::before,
+.markdown-rendered blockquote.success::before {
+  content: "✓ SUCCESS";
+  color: rgba(var(--green-rgb), 0.8);
+}
+
+blockquote.success::after,
+.markdown-rendered blockquote.success::after {
+  background-image: radial-gradient(
+    circle at 20% 20%,
+    rgba(var(--green-rgb), 0.03) 1px,
+    transparent 1px
+  );
+}
+
+/* Terminal blockquote - add class .terminal */
+blockquote.terminal,
+.markdown-rendered blockquote.terminal {
+  border-left: none;
+  border: 2px solid rgba(var(--green-rgb), 0.4);
+  background: linear-gradient(
+    145deg,
+    rgba(var(--green-rgb), 0.05) 0%,
+    rgba(0, 0, 0, 0.3) 20%,
+    rgba(0, 0, 0, 0.5) 80%,
+    rgba(var(--green-rgb), 0.03) 100%
+  );
+  font-family: var(--font-terminal);
+  font-style: normal;
+  color: var(--green);
+  text-shadow: 0 0 2px rgba(var(--green-rgb), 0.6);
+}
+
+blockquote.terminal::before,
+.markdown-rendered blockquote.terminal::before {
+  content: "$ TERMINAL";
+  position: absolute;
+  top: -12px;
+  left: 10px;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--green-rgb), 0.8) 0%,
+    rgba(var(--green-rgb), 0.6) 50%,
+    rgba(var(--green-rgb), 0.8) 100%
+  );
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-terminal);
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 2px;
+  text-shadow: none;
+  letter-spacing: 0.1em;
+}
+
+blockquote.terminal::after,
+.markdown-rendered blockquote.terminal::after {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(var(--green-rgb), 0.02) 2px,
+    rgba(var(--green-rgb), 0.02) 4px
+  );
+  background-size: 100% 4px;
+}
+
+/* Quote citation styling */
+blockquote cite,
+.markdown-rendered blockquote cite {
+  display: block;
+  text-align: right;
+  margin-top: 0.5rem;
+  font-size: 0.9em;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+blockquote cite::before,
+.markdown-rendered blockquote cite::before {
+  content: "— ";
+  color: rgba(var(--yellow-rgb), 0.6);
 }
 
 /* ================================================================
