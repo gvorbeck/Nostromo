@@ -276,6 +276,7 @@ body {
   --h4-line-height: var(--heading-line-height);
   --h5-line-height: var(--heading-line-height);
   --h6-line-height: var(--heading-line-height);
+  --inline-title-font: var(--font-terminal);
 
   /* LINKS */
   --link-color: var(--red);
@@ -401,15 +402,14 @@ h6 {
 
 /* Left border accents */
 h1 {
-  border-left: 3px solid rgba(var(--yellow-rgb), 0.6);
   padding-left: 1rem;
   position: relative;
   font-size: calc(var(--font-text-size) * 2);
   color: var(--yellow);
+  font-family: "VT323", "Share Tech Mono", monospace;
 }
 
 h2 {
-  border-left: 2px solid rgba(var(--yellow-rgb), 0.4);
   padding-left: 0.8rem;
   position: relative;
   font-size: calc(var(--font-text-size) * 1.6);
