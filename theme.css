@@ -58,6 +58,14 @@ body {
   --padding: 12px;
   --border-radius: 4px;
   --border-width: 1px;
+
+  /* Heading Sizes */
+  --h1-size: 5rem;
+  --h2-size: 4.5rem;
+  --h3-size: 4rem;
+  --h4-size: 3.5rem;
+  --h5-size: 3rem;
+  --h6-size: 2.5rem;
 }
 
 /* Light theme - Warm retro feel */
@@ -166,6 +174,10 @@ body {
   background: var(--background-primary);
   color: var(--text-normal);
   position: relative;
+
+  .markdown-preview-view .heading-collapse-indicator {
+    left: 0;
+  }
 }
 
 /* Scanlines overlay for authentic CRT effect */
@@ -236,8 +248,74 @@ h6 {
   color: var(--text-accent);
   letter-spacing: 0.02em;
   margin: 1.5em 0 0.5em 0;
-  text-shadow: 0 0 10px currentColor;
+  text-shadow: 0 0 4px currentColor;
   position: relative;
+}
+
+/* Subtle hover effects */
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover {
+  text-shadow: 0 0 8px rgba(var(--yellow-rgb), 0.8);
+  transition: text-shadow 0.3s ease;
+}
+
+/* Subtle accent lines for different heading levels */
+.markdown-rendered h1::before {
+  content: "▓▒░";
+  color: rgba(var(--yellow-rgb), 0.6);
+  font-size: 0.6em;
+  margin-right: 0.5rem;
+  position: relative;
+  top: -0.1em;
+}
+
+.markdown-rendered h2::before {
+  content: "▒░";
+  color: rgba(var(--yellow-rgb), 0.5);
+  font-size: 0.7em;
+  margin-right: 0.4rem;
+  position: relative;
+  top: -0.1em;
+}
+
+.markdown-rendered h3::before {
+  content: "░";
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-size: 0.8em;
+  margin-right: 0.3rem;
+  position: relative;
+  top: -0.1em;
+}
+
+.markdown-rendered h4::before {
+  content: "▸";
+  color: rgba(var(--yellow-rgb), 0.5);
+  font-size: 0.9em;
+  margin-right: 0.3rem;
+  position: relative;
+  top: -0.05em;
+}
+
+.markdown-rendered h5::before {
+  content: "◦";
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-size: 1em;
+  margin-right: 0.3rem;
+  position: relative;
+  top: -0.05em;
+}
+
+.markdown-rendered h6::before {
+  content: "·";
+  color: rgba(var(--yellow-rgb), 0.3);
+  font-size: 1.2em;
+  margin-right: 0.3rem;
+  position: relative;
+  top: -0.05em;
 }
 
 /* Retro underline effect for headings */
