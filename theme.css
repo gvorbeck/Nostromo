@@ -1349,84 +1349,183 @@ pre {
 }
 
 /* ================================================================
-   LISTS
+   LISTS - RETRO-FUTURISTIC STYLING
    ================================================================ */
 
-ul,
-ol {
-  padding-left: 1.5em;
-  margin: 0.8em 0;
-}
+/* ========== */
+/* ORDERED LISTS - DECIMAL LEADING ZERO */
+/* ========== */
 
-li {
-  margin: 0.3em 0;
+.markdown-rendered ol {
+  list-style: none;
+  counter-reset: cyber-counter;
+  padding-left: 0;
   position: relative;
+  margin: 1.5rem 0;
+  max-width: 100%;
 }
 
-/* Custom bullet points */
-ul li::marker {
-  content: "► ";
-  color: var(--text-accent);
-}
-
-ol li::marker {
-  color: var(--text-accent);
-  font-weight: normal;
-}
-
-/* Nested lists */
-ul ul li::marker {
-  content: "▪ ";
-}
-
-ul ul ul li::marker {
-  content: "▫ ";
-}
-
-/* ================================================================
-   BLOCKQUOTES - RETRO-FUTURISTIC STYLING
-   ================================================================ */
-
-/* Retro-futuristic blockquotes */
-blockquote,
-.markdown-rendered blockquote {
+.markdown-rendered ol li {
+  counter-increment: cyber-counter;
   position: relative;
-  border-left: 3px solid rgba(var(--yellow-rgb), 0.6);
+  padding-left: 2.8rem;
+  margin: 0.8rem 0;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Retro-futuristic number styling */
+.markdown-rendered ol li::before {
+  content: counter(cyber-counter, decimal-leading-zero) "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-interface);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
   background: linear-gradient(
     90deg,
-    rgba(var(--yellow-rgb), 0.05) 0%,
-    rgba(var(--yellow-rgb), 0.02) 30%,
-    transparent 70%
+    rgba(var(--yellow-rgb), 0.1) 0%,
+    rgba(var(--yellow-rgb), 0.05) 50%,
+    transparent 100%
   );
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: rgba(var(--text-normal), 0.9);
-  overflow: visible;
-  border-radius: var(--border-radius);
-  box-shadow: inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
-    0 0 5px rgba(var(--yellow-rgb), 0.2);
+  padding: 0.2rem 0.4rem 0.2rem 0.3rem;
+  border-left: 2px solid rgba(var(--yellow-rgb), 0.6);
+  border-radius: 0 3px 3px 0;
+  max-width: 2.2rem;
+  width: auto;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: subtle-pulse 3s ease-in-out infinite alternate;
 }
 
-/* Tech accent for blockquotes */
-blockquote::before,
-.markdown-rendered blockquote::before {
-  content: "▸▸";
+/* Hover effects for list items */
+.markdown-rendered ol li:hover::before {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.2) 0%,
+    rgba(var(--yellow-rgb), 0.1) 50%,
+    rgba(var(--yellow-rgb), 0.02) 100%
+  );
+  border-left-color: var(--yellow);
+  text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.8);
+}
+
+/* Subtle scan line effect */
+.markdown-rendered ol li::after {
+  content: "";
   position: absolute;
-  left: -8px;
-  top: 0.5rem;
-  color: rgba(var(--yellow-rgb), 0.6);
-  font-size: 0.8rem;
-  font-style: normal;
-  background: var(--background-primary);
-  padding: 0 4px;
-  font-family: var(--font-terminal);
-  text-shadow: 0 0 3px currentColor;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--yellow-rgb), 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  animation: scan-line 4s linear infinite;
+  opacity: 0.3;
+  overflow: hidden;
 }
 
-/* Subtle grid pattern overlay */
-blockquote::after,
-.markdown-rendered blockquote::after {
+/* ========== */
+/* UNORDERED LISTS - BLOCK CHARACTERS */
+/* ========== */
+
+.markdown-rendered ul {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.markdown-rendered ul li {
+  position: relative;
+  padding-left: 2rem;
+  margin: 0.6rem 0;
+  line-height: 1.6;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Level 1 - Primary block character */
+.markdown-rendered ul li::before {
+  content: "▓";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: var(--font-interface);
+  font-size: 1rem;
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
+  animation: block-flicker 2.5s ease-in-out infinite;
+}
+
+/* Level 2 - Medium block character */
+.markdown-rendered ul ul li::before {
+  content: "▒";
+  color: rgba(var(--yellow-rgb), 0.8);
+  left: 0.1rem;
+  font-size: 0.9rem;
+}
+
+/* Level 3 - Light block character */
+.markdown-rendered ul ul ul li::before {
+  content: "░";
+  color: rgba(var(--yellow-rgb), 0.6);
+  left: 0.2rem;
+  font-size: 0.8rem;
+}
+
+/* Level 4+ - Arrow character */
+.markdown-rendered ul ul ul ul li::before {
+  content: "▸";
+  color: rgba(var(--yellow-rgb), 0.5);
+  left: 0.3rem;
+  font-size: 0.7rem;
+}
+
+/* Nested list spacing adjustments */
+.markdown-rendered ul ul {
+  margin: 0.3rem 0;
+  padding-left: 1.2rem;
+}
+
+.markdown-rendered ul ul ul {
+  padding-left: 1rem;
+}
+
+.markdown-rendered ul ul ul ul {
+  padding-left: 0.8rem;
+}
+
+/* ========== */
+/* HOVER EFFECTS & INTERACTIONS */
+/* ========== */
+
+/* Subtle glow on list item hover */
+.markdown-rendered li:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.02) 0%,
+    transparent 30%
+  );
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+/* Tech grid pattern overlay for lists */
+.markdown-rendered ol::before,
+.markdown-rendered ul::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1434,489 +1533,188 @@ blockquote::after,
   right: 0;
   bottom: 0;
   background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--yellow-rgb), 0.03) 1px,
+    circle at 90% 10%,
+    rgba(var(--yellow-rgb), 0.01) 1px,
     transparent 1px
   );
-  background-size: 15px 15px;
+  background-size: 20px 20px;
   pointer-events: none;
   opacity: 0.4;
-  border-radius: var(--border-radius);
+  z-index: -1;
 }
 
-/* Hover effects for blockquotes */
-blockquote:hover,
-.markdown-rendered blockquote:hover {
-  border-left-color: rgba(var(--yellow-rgb), 0.8);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--yellow-rgb), 0.08) 0%,
-    rgba(var(--yellow-rgb), 0.04) 30%,
-    rgba(var(--yellow-rgb), 0.01) 70%
-  );
-  box-shadow: inset 0 0 15px rgba(var(--yellow-rgb), 0.15),
-    0 0 8px rgba(var(--yellow-rgb), 0.3);
-  transition: all 0.3s ease;
-}
-
-blockquote:hover::before,
-.markdown-rendered blockquote:hover::before {
-  color: rgba(var(--yellow-rgb), 0.9);
-  text-shadow: 0 0 5px currentColor;
-  transition: all 0.3s ease;
-}
-
-/* Nested blockquotes */
-blockquote blockquote,
-.markdown-rendered blockquote blockquote {
-  border-left-color: rgba(var(--orange-rgb), 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--orange-rgb), 0.05) 0%,
-    rgba(var(--orange-rgb), 0.02) 30%,
-    transparent 70%
-  );
-  margin: 1rem 0;
-}
-
-blockquote blockquote::before,
-.markdown-rendered blockquote blockquote::before {
-  content: "▸";
-  color: rgba(var(--orange-rgb), 0.6);
-}
-
-blockquote blockquote::after,
-.markdown-rendered blockquote blockquote::after {
-  background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--orange-rgb), 0.03) 1px,
-    transparent 1px
-  );
-}
-
-/* Special blockquote types */
-
-/* Info blockquote - add class .info */
-blockquote.info,
-.markdown-rendered blockquote.info {
-  border-left-color: rgba(var(--blue-rgb), 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--blue-rgb), 0.05) 0%,
-    rgba(var(--blue-rgb), 0.02) 30%,
-    transparent 70%
-  );
-}
-
-blockquote.info::before,
-.markdown-rendered blockquote.info::before {
-  content: "▸ INFO";
-  color: rgba(var(--blue-rgb), 0.8);
-}
-
-blockquote.info::after,
-.markdown-rendered blockquote.info::after {
-  background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--blue-rgb), 0.03) 1px,
-    transparent 1px
-  );
-}
-
-/* Warning blockquote - add class .warning */
-blockquote.warning,
-.markdown-rendered blockquote.warning {
-  border-left-color: rgba(var(--orange-rgb), 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--orange-rgb), 0.05) 0%,
-    rgba(var(--orange-rgb), 0.02) 30%,
-    transparent 70%
-  );
-}
-
-blockquote.warning::before,
-.markdown-rendered blockquote.warning::before {
-  content: "⚠ WARNING";
-  color: rgba(var(--orange-rgb), 0.8);
-}
-
-blockquote.warning::after,
-.markdown-rendered blockquote.warning::after {
-  background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--orange-rgb), 0.03) 1px,
-    transparent 1px
-  );
-}
-
-/* Error blockquote - add class .error */
-blockquote.error,
-.markdown-rendered blockquote.error {
-  border-left-color: rgba(var(--red-rgb), 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--red-rgb), 0.05) 0%,
-    rgba(var(--red-rgb), 0.02) 30%,
-    transparent 70%
-  );
-}
-
-blockquote.error::before,
-.markdown-rendered blockquote.error::before {
-  content: "✕ ERROR";
-  color: rgba(var(--red-rgb), 0.8);
-}
-
-blockquote.error::after,
-.markdown-rendered blockquote.error::after {
-  background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--red-rgb), 0.03) 1px,
-    transparent 1px
-  );
-}
-
-/* Success blockquote - add class .success */
-blockquote.success,
-.markdown-rendered blockquote.success {
-  border-left-color: rgba(var(--green-rgb), 0.6);
-  background: linear-gradient(
-    90deg,
-    rgba(var(--green-rgb), 0.05) 0%,
-    rgba(var(--green-rgb), 0.02) 30%,
-    transparent 70%
-  );
-}
-
-blockquote.success::before,
-.markdown-rendered blockquote.success::before {
-  content: "✓ SUCCESS";
-  color: rgba(var(--green-rgb), 0.8);
-}
-
-blockquote.success::after,
-.markdown-rendered blockquote.success::after {
-  background-image: radial-gradient(
-    circle at 20% 20%,
-    rgba(var(--green-rgb), 0.03) 1px,
-    transparent 1px
-  );
-}
-
-/* Terminal blockquote - add class .terminal */
-blockquote.terminal,
-.markdown-rendered blockquote.terminal {
-  border-left: none;
-  border: 2px solid rgba(var(--green-rgb), 0.4);
-  background: linear-gradient(
-    145deg,
-    rgba(var(--green-rgb), 0.05) 0%,
-    rgba(0, 0, 0, 0.3) 20%,
-    rgba(0, 0, 0, 0.5) 80%,
-    rgba(var(--green-rgb), 0.03) 100%
-  );
-  font-family: var(--font-terminal);
-  font-style: normal;
-  color: var(--green);
-  text-shadow: 0 0 2px rgba(var(--green-rgb), 0.6);
-}
-
-blockquote.terminal::before,
-.markdown-rendered blockquote.terminal::before {
-  content: "$ TERMINAL";
+/* Corner brackets for the entire list container */
+.markdown-rendered ol::after,
+.markdown-rendered ul::after {
+  content: "└";
   position: absolute;
-  top: -12px;
-  left: 10px;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--green-rgb), 0.8) 0%,
-    rgba(var(--green-rgb), 0.6) 50%,
-    rgba(var(--green-rgb), 0.8) 100%
-  );
-  color: rgba(0, 0, 0, 0.8);
-  font-family: var(--font-terminal);
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 2px;
-  text-shadow: none;
-  letter-spacing: 0.1em;
-}
-
-blockquote.terminal::after,
-.markdown-rendered blockquote.terminal::after {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 2px,
-    rgba(var(--green-rgb), 0.02) 2px,
-    rgba(var(--green-rgb), 0.02) 4px
-  );
-  background-size: 100% 4px;
-}
-
-/* Quote citation styling */
-blockquote cite,
-.markdown-rendered blockquote cite {
-  display: block;
-  text-align: right;
-  margin-top: 0.5rem;
-  font-size: 0.9em;
-  color: var(--text-muted);
-  font-style: normal;
-}
-
-blockquote cite::before,
-.markdown-rendered blockquote cite::before {
-  content: "— ";
-  color: rgba(var(--yellow-rgb), 0.6);
-}
-
-/* ================================================================
-   TABLES
-   ================================================================ */
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 1em 0;
-  background: var(--background-secondary);
-  border: 1px solid var(--background-modifier-border);
-}
-
-th,
-td {
-  border: 1px solid var(--background-modifier-border);
-  padding: 8px 12px;
-  text-align: left;
-}
-
-th {
-  background: rgba(var(--yellow-rgb), 0.1);
-  color: var(--text-accent);
-  font-weight: normal;
-}
-
-tr:nth-child(even) {
-  background: rgba(var(--yellow-rgb), 0.03);
-}
-
-tr:hover {
-  background: rgba(var(--yellow-rgb), 0.08);
-}
-
-/* ================================================================
-   UI ELEMENTS
-   ================================================================ */
-
-/* Workspace */
-.workspace {
-  background: var(--background-primary);
-}
-
-/* Titlebar */
-.titlebar {
-  background: var(--titlebar-background);
-  border-bottom: 2px solid var(--divider-color);
-  position: relative;
-}
-
-.titlebar::before {
-  content: "OBSIDIAN TERMINAL v2.1.47";
-  position: absolute;
-  top: 4px;
-  right: 10px;
-  font-family: var(--font-terminal);
-  font-size: 10px;
-  color: var(--text-muted);
-  text-shadow: 0 0 3px currentColor;
-}
-
-/* Ribbon/sidebar */
-.side-dock-ribbon {
-  background: var(--ribbon-background);
-  border-right: 1px solid var(--divider-color);
-  position: relative;
-  box-shadow: inset -5px 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.side-dock-ribbon::before {
-  content: "";
-  position: absolute;
-  top: 0;
+  bottom: -0.5rem;
   right: 0;
-  width: 1px;
-  height: 100%;
-  /* background: linear-gradient(
-    180deg,
-    transparent 0%,
-    var(--yellow) 20%,
-    var(--yellow) 80%,
-    transparent 100%
-  ); */
-  /* box-shadow: 0 0 5px var(--yellow); */
-  /* animation: pulse 2s ease-in-out infinite; */
+  color: rgba(var(--yellow-rgb), 0.3);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  pointer-events: none;
 }
 
-/* @keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.3;
+/* Alternative data stream effect for ordered lists */
+.markdown-rendered ol li:nth-child(even)::before {
+  animation-delay: 0.5s;
+}
+
+.markdown-rendered ol li:nth-child(3n)::before {
+  animation-delay: 1s;
+}
+
+/* Block character fade pattern for unordered lists */
+.markdown-rendered ul li:nth-child(even)::before {
+  animation-delay: 0.8s;
+}
+
+.markdown-rendered ul li:nth-child(3n)::before {
+  animation-delay: 1.6s;
+}
+
+/* ========== */
+/* CHECKLIST SUPPORT */
+/* ========== */
+
+/* Style for task lists (checkboxes) */
+.markdown-rendered ul.contains-task-list li {
+  padding-left: 2rem;
+}
+
+.markdown-rendered ul.contains-task-list li::before {
+  display: none; /* Hide block character for task lists */
+}
+
+/* Custom checkbox styling */
+.markdown-rendered ul.contains-task-list li input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(var(--yellow-rgb), 0.5);
+  background: transparent;
+  border-radius: 2px;
+  margin-right: 0.8rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.markdown-rendered ul.contains-task-list li input[type="checkbox"]:checked {
+  border-color: var(--yellow);
+  background: linear-gradient(
+    135deg,
+    rgba(var(--yellow-rgb), 0.2) 0%,
+    rgba(var(--yellow-rgb), 0.1) 100%
+  );
+  box-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.3);
+}
+
+.markdown-rendered
+  ul.contains-task-list
+  li
+  input[type="checkbox"]:checked::after {
+  content: "▓";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 10px;
+  color: var(--yellow);
+  text-shadow: 0 0 2px rgba(var(--yellow-rgb), 0.8);
+}
+
+/* ========== */
+/* LIST ANIMATIONS */
+/* ========== */
+
+@keyframes subtle-pulse {
+  0% {
+    opacity: 0.8;
   }
-  50% {
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.7);
+  }
+}
+
+@keyframes block-flicker {
+  0%,
+  95% {
     opacity: 1;
   }
-} */
-
-.side-dock-ribbon-tab {
-  color: var(--text-muted);
-  transition: all 0.2s ease;
+  96%,
+  98% {
+    opacity: 0.3;
+  }
+  99%,
+  100% {
+    opacity: 1;
+  }
 }
 
-.side-dock-ribbon-tab:hover,
-.side-dock-ribbon-tab.is-active {
-  color: var(--text-accent);
+@keyframes scan-line {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
 }
 
-/* Tabs */
-.workspace-tab-header {
-  background: var(--background-secondary);
-  border-bottom: 1px solid var(--divider-color);
+/* ========== */
+/* RESPONSIVE ADJUSTMENTS */
+/* ========== */
+
+/* Smaller screens - reduce spacing */
+@media (max-width: 768px) {
+  .markdown-rendered ol li {
+    padding-left: 2.2rem;
+  }
+
+  .markdown-rendered ul li {
+    padding-left: 1.5rem;
+  }
+
+  .markdown-rendered ol li::before {
+    max-width: 1.8rem;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem 0.1rem 0.2rem;
+  }
+
+  .markdown-rendered ul li::before {
+    font-size: 0.85rem;
+  }
+
+  /* Reduce nested list spacing on mobile */
+  .markdown-rendered ul ul {
+    padding-left: 1rem;
+  }
+
+  .markdown-rendered ul ul ul {
+    padding-left: 0.8rem;
+  }
+
+  .markdown-rendered ul ul ul ul {
+    padding-left: 0.6rem;
+  }
 }
 
-.workspace-tab-header-inner {
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-}
+/* Extra small screens */
+@media (max-width: 480px) {
+  .markdown-rendered ol li {
+    padding-left: 2rem;
+  }
 
-.workspace-tab-header.is-active .workspace-tab-header-inner {
-  color: var(--text-accent);
-}
+  .markdown-rendered ul li {
+    padding-left: 1.3rem;
+  }
 
-/* Status bar */
-.status-bar {
-  background: var(--background-secondary);
-  border-top: 1px solid var(--divider-color);
-  color: var(--text-muted);
-  font-family: var(--font-terminal);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  position: relative;
-  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.5),
-    0 0 10px rgba(var(--yellow-rgb), 0.1);
-}
-
-.status-bar::before {
-  content: "STATUS: ONLINE | CPU: 47% | MEM: 68% | ";
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--green);
-  font-size: 10px;
-  text-shadow: 0 0 3px currentColor;
-}
-
-/* Buttons */
-button {
-  background: var(--interactive-normal);
-  border: 1px solid var(--background-modifier-border);
-  color: var(--text-normal);
-  font-family: var(--font-interface);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-  border-radius: var(--border-radius);
-  position: relative;
-  overflow: hidden;
-}
-
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(var(--yellow-rgb), 0.3),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-button:hover::before {
-  left: 100%;
-}
-
-button:hover {
-  background: var(--interactive-hover);
-  border-color: var(--background-modifier-border-hover);
-  box-shadow: 0 0 10px rgba(var(--yellow-rgb), 0.3),
-    inset 0 0 10px rgba(var(--yellow-rgb), 0.1);
-  text-shadow: 0 0 5px currentColor;
-}
-
-button:active {
-  background: var(--interactive-accent);
-  color: var(--text-on-accent);
-  transform: scale(0.98);
-}
-
-/* Input fields */
-input,
-textarea,
-select {
-  background: var(--background-modifier-form-field);
-  border: 1px solid var(--background-modifier-border);
-  color: var(--text-normal);
-  font-family: var(--font-terminal);
-  border-radius: var(--border-radius);
-  transition: all 0.2s ease;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--background-modifier-border-focus);
-  outline: none;
-}
-
-/* ================================================================
-   SCROLLBARS
-   ================================================================ */
-
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(var(--yellow-rgb), 0.5) 0%,
-    rgba(var(--orange-rgb), 0.5) 50%,
-    rgba(var(--red-rgb), 0.5) 100%
-  );
-  border-radius: 6px;
-  border: 2px solid var(--background-primary);
-  box-shadow: inset 0 0 5px rgba(var(--yellow-rgb), 0.5),
-    0 0 5px rgba(var(--yellow-rgb), 0.3);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--gray-rgb), 0.5);
-}
-
-::-webkit-scrollbar-corner {
-  background: var(--background-primary);
+  .markdown-rendered ol li::before {
+    max-width: 1.6rem;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.2rem;
+  }
 }
 
 /* ================================================================
