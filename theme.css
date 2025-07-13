@@ -496,7 +496,7 @@ strong {
 .markdown-rendered hr {
   border: none !important;
   background: none !important;
-  height: auto !important;
+  height: 1px !important;
   margin: 3rem 0 !important;
   position: relative !important;
   overflow: visible !important;
@@ -1937,19 +1937,45 @@ select:focus {
 }
 
 /* Specific callout type color assignments */
-.markdown-rendered .callout[data-callout="note"] { --current-callout-color: var(--callout-color-note); }
-.markdown-rendered .callout[data-callout="abstract"] { --current-callout-color: var(--callout-color-abstract); }
-.markdown-rendered .callout[data-callout="info"] { --current-callout-color: var(--callout-color-info); }
-.markdown-rendered .callout[data-callout="todo"] { --current-callout-color: var(--callout-color-todo); }
-.markdown-rendered .callout[data-callout="tip"] { --current-callout-color: var(--callout-color-tip); }
-.markdown-rendered .callout[data-callout="success"] { --current-callout-color: var(--callout-color-success); }
-.markdown-rendered .callout[data-callout="question"] { --current-callout-color: var(--callout-color-question); }
-.markdown-rendered .callout[data-callout="warning"] { --current-callout-color: var(--callout-color-warning); }
-.markdown-rendered .callout[data-callout="failure"] { --current-callout-color: var(--callout-color-failure); }
-.markdown-rendered .callout[data-callout="danger"] { --current-callout-color: var(--callout-color-danger); }
-.markdown-rendered .callout[data-callout="bug"] { --current-callout-color: var(--callout-color-bug); }
-.markdown-rendered .callout[data-callout="example"] { --current-callout-color: var(--callout-color-example); }
-.markdown-rendered .callout[data-callout="quote"] { --current-callout-color: var(--callout-color-quote); }
+.markdown-rendered .callout[data-callout="note"] {
+  --current-callout-color: var(--callout-color-note);
+}
+.markdown-rendered .callout[data-callout="abstract"] {
+  --current-callout-color: var(--callout-color-abstract);
+}
+.markdown-rendered .callout[data-callout="info"] {
+  --current-callout-color: var(--callout-color-info);
+}
+.markdown-rendered .callout[data-callout="todo"] {
+  --current-callout-color: var(--callout-color-todo);
+}
+.markdown-rendered .callout[data-callout="tip"] {
+  --current-callout-color: var(--callout-color-tip);
+}
+.markdown-rendered .callout[data-callout="success"] {
+  --current-callout-color: var(--callout-color-success);
+}
+.markdown-rendered .callout[data-callout="question"] {
+  --current-callout-color: var(--callout-color-question);
+}
+.markdown-rendered .callout[data-callout="warning"] {
+  --current-callout-color: var(--callout-color-warning);
+}
+.markdown-rendered .callout[data-callout="failure"] {
+  --current-callout-color: var(--callout-color-failure);
+}
+.markdown-rendered .callout[data-callout="danger"] {
+  --current-callout-color: var(--callout-color-danger);
+}
+.markdown-rendered .callout[data-callout="bug"] {
+  --current-callout-color: var(--callout-color-bug);
+}
+.markdown-rendered .callout[data-callout="example"] {
+  --current-callout-color: var(--callout-color-example);
+}
+.markdown-rendered .callout[data-callout="quote"] {
+  --current-callout-color: var(--callout-color-quote);
+}
 
 /* Main callout container with gradient border effect */
 .markdown-rendered .callout::before {
