@@ -539,7 +539,7 @@ strong {
   letter-spacing: 0.2em !important;
   z-index: 2 !important;
   white-space: nowrap !important;
-  animation: subtle-glow 4s ease-in-out infinite alternate !important;
+  animation: subtle-glow 4s ease-in-out infinite !important;
 }
 
 /* Glow effect on hover */
@@ -1291,241 +1291,143 @@ pre {
   letter-spacing: 0.2em !important;
 }
 
-/* ========================================
-   EDITOR MODE COMPATIBILITY & RESET
-   ======================================== */
-
-/* Reset edit mode to default styling */
-.cm-s-obsidian .HyperMD-codeblock-begin,
-.cm-s-obsidian .HyperMD-codeblock-end {
-  color: var(--text-muted) !important;
-  font-family: var(--font-text) !important;
-  background: transparent !important;
-}
-
-.cm-s-obsidian .HyperMD-codeblock {
-  background: var(--background-secondary) !important;
-  border: 1px solid var(--background-modifier-border) !important;
-  border-radius: 4px !important;
-}
-
-/* Reset editor code to clean styling */
-.cm-s-obsidian .cm-inline-code {
-  background: var(--background-modifier-form-field) !important;
-  color: var(--text-accent) !important;
-  border: none !important;
-  padding: 1px 3px !important;
-  font-family: var(--font-text) !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .markdown-rendered pre,
-  pre {
-    margin: 1rem 0 !important;
-  }
-
-  .markdown-rendered pre code,
-  pre code {
-    padding: 1rem !important;
-    font-size: 0.8rem !important;
-  }
-
-  .markdown-rendered pre::before,
-  pre::before {
-    font-size: 0.6rem !important;
-    height: 24px !important;
-  }
-
-  .markdown-rendered pre code,
-  pre code {
-    margin-top: 24px !important;
-  }
-
-  .markdown-rendered pre code::after,
-  pre code::after {
-    top: 24px !important;
-  }
-}
-
 /* ================================================================
-   LISTS - RETRO-FUTURISTIC STYLING
+   TABLES - RETRO-FUTURISTIC STYLING
    ================================================================ */
 
-/* ========== */
-/* ORDERED LISTS - DECIMAL LEADING ZERO */
-/* ========== */
-
-.markdown-rendered ol {
-  list-style: none;
-  counter-reset: cyber-counter;
-  padding-left: 0;
-  position: relative;
-  margin: 1.5rem 0;
-  max-width: 100%;
-}
-
-.markdown-rendered ol li {
-  counter-increment: cyber-counter;
-  position: relative;
-  padding-left: 2.8rem;
-  margin: 0.8rem 0;
-  line-height: 1.6;
-  transition: all 0.2s ease;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Retro-futuristic number styling */
-.markdown-rendered ol li::before {
-  content: counter(cyber-counter, decimal-leading-zero) "▸";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-family: var(--font-interface);
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: var(--yellow);
-  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
+/* Main table container with tech aesthetic */
+.markdown-rendered table {
+  border-radius: 0 !important;
+  border: 1px solid rgba(var(--yellow-rgb), 0.3);
   background: linear-gradient(
-    90deg,
-    rgba(var(--yellow-rgb), 0.1) 0%,
-    rgba(var(--yellow-rgb), 0.05) 50%,
-    transparent 100%
+    135deg,
+    rgba(var(--purple-rgb), 0.05) 0%,
+    transparent 50%,
+    rgba(var(--yellow-rgb), 0.02) 100%
   );
-  padding: 0.2rem 0.4rem 0.2rem 0.3rem;
-  border-left: 2px solid rgba(var(--yellow-rgb), 0.6);
-  border-radius: 0 3px 3px 0;
-  max-width: 2.2rem;
-  width: auto;
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: subtle-pulse 3s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(var(--yellow-rgb), 0.1),
+    inset 0 1px 0 rgba(var(--yellow-rgb), 0.1);
+  position: relative;
+  overflow: visible;
+  margin: 1.5rem 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
-/* Hover effects for list items */
-.markdown-rendered ol li:hover::before {
+/* Tech-style table headers */
+.markdown-rendered table th {
   background: linear-gradient(
     90deg,
     rgba(var(--yellow-rgb), 0.2) 0%,
     rgba(var(--yellow-rgb), 0.1) 50%,
-    rgba(var(--yellow-rgb), 0.02) 100%
-  );
-  border-left-color: var(--yellow);
-  text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.8);
-}
-
-/* Subtle scan line effect */
-.markdown-rendered ol li::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--yellow-rgb), 0.2) 50%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  background-position: -100% 0;
-  animation: scan-line 4s linear infinite;
-  opacity: 0.3;
-  overflow: hidden;
-}
-
-/* ========== */
-/* UNORDERED LISTS - BLOCK CHARACTERS */
-/* ========== */
-
-.markdown-rendered ul {
-  list-style: none;
-  padding-left: 0;
+    rgba(var(--yellow-rgb), 0.05) 100%
+  ) !important;
+  border-bottom: 2px solid rgba(var(--yellow-rgb), 0.4) !important;
+  font-family: var(--font-interface) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-size: 0.9em !important;
+  color: var(--yellow) !important;
   position: relative;
-  margin: 1.5rem 0;
+  padding: 0.75rem !important;
+  text-align: left;
+  font-weight: normal;
 }
 
-.markdown-rendered ul li {
-  position: relative;
-  padding-left: 2rem;
-  margin: 0.6rem 0;
-  line-height: 1.6;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Level 1 - Primary block character */
-.markdown-rendered ul li::before {
-  content: "▓";
-  position: absolute;
-  left: 0;
-  top: 0.1rem;
-  font-family: var(--font-interface);
-  font-size: 1rem;
-  color: var(--yellow);
-  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
-  animation: block-flicker 2.5s ease-in-out infinite;
-}
-
-/* Level 2 - Medium block character */
-.markdown-rendered ul ul li::before {
-  content: "▒";
-  color: rgba(var(--yellow-rgb), 0.8);
-  left: 0.1rem;
-  font-size: 0.9rem;
-}
-
-/* Level 3 - Light block character */
-.markdown-rendered ul ul ul li::before {
-  content: "░";
-  color: rgba(var(--yellow-rgb), 0.6);
-  left: 0.2rem;
-  font-size: 0.8rem;
-}
-
-/* Level 4+ - Arrow character */
-.markdown-rendered ul ul ul ul li::before {
+/* Header accent with arrow indicator */
+.markdown-rendered table th::before {
   content: "▸";
-  color: rgba(var(--yellow-rgb), 0.5);
-  left: 0.3rem;
-  font-size: 0.7rem;
+  color: rgba(var(--yellow-rgb), 0.6);
+  margin-right: 0.3rem;
+  font-size: 0.8em;
+  font-family: var(--font-interface);
 }
 
-/* Nested list spacing adjustments */
-.markdown-rendered ul ul {
-  margin: 0.3rem 0;
-  padding-left: 1.2rem;
+/* Table data cells */
+.markdown-rendered table td {
+  padding: 0.75rem !important;
+  border: 1px solid rgba(var(--yellow-rgb), 0.2) !important;
+  border-top: none !important;
+  border-bottom: 1px solid rgba(var(--yellow-rgb), 0.15) !important;
+  background: transparent;
+  color: var(--text-normal);
+  line-height: 1.4;
 }
 
-.markdown-rendered ul ul ul {
-  padding-left: 1rem;
+/* Row hover effects */
+.markdown-rendered table tbody tr:hover {
+  background: rgba(var(--yellow-rgb), 0.05) !important;
+  transition: background 0.2s ease;
 }
 
-.markdown-rendered ul ul ul ul {
-  padding-left: 0.8rem;
+.markdown-rendered table tbody tr:hover td {
+  background: transparent !important;
 }
 
-/* ========== */
-/* HOVER EFFECTS & INTERACTIONS */
-/* ========== */
-
-/* Subtle glow on list item hover */
-.markdown-rendered li:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(var(--yellow-rgb), 0.02) 0%,
-    transparent 30%
-  );
-  border-radius: 2px;
-  transition: background 0.3s ease;
+/* First and last column special treatment */
+.markdown-rendered table td:first-child,
+.markdown-rendered table th:first-child {
+  border-left: 2px solid rgba(var(--yellow-rgb), 0.3) !important;
 }
 
-/* Tech grid pattern overlay for lists */
-.markdown-rendered ol::before,
-.markdown-rendered ul::before {
+.markdown-rendered table td:last-child,
+.markdown-rendered table th:last-child {
+  border-right: 2px solid rgba(var(--yellow-rgb), 0.3) !important;
+}
+
+/* Corner indicators for that terminal feel */
+.markdown-rendered table::before {
+  content: "┌";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.markdown-rendered table::after {
+  content: "┘";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Alternative corner indicators */
+.markdown-rendered table thead::before {
+  content: "┐";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.markdown-rendered table tbody::after {
+  content: "└";
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  color: rgba(var(--yellow-rgb), 0.4);
+  font-family: var(--font-interface);
+  font-size: 12px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Subtle grid overlay for tech feel */
+.markdown-rendered table tbody::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1533,187 +1435,40 @@ pre {
   right: 0;
   bottom: 0;
   background-image: radial-gradient(
-    circle at 90% 10%,
-    rgba(var(--yellow-rgb), 0.01) 1px,
+    circle at 2px 2px,
+    rgba(var(--yellow-rgb), 0.03) 1px,
     transparent 1px
   );
   background-size: 20px 20px;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.5;
   z-index: -1;
 }
 
-/* Corner brackets for the entire list container */
-.markdown-rendered ol::after,
-.markdown-rendered ul::after {
-  content: "└";
-  position: absolute;
-  bottom: -0.5rem;
-  right: 0;
-  color: rgba(var(--yellow-rgb), 0.3);
-  font-family: var(--font-interface);
-  font-size: 12px;
-  pointer-events: none;
-}
-
-/* Alternative data stream effect for ordered lists */
-.markdown-rendered ol li:nth-child(even)::before {
-  animation-delay: 0.5s;
-}
-
-.markdown-rendered ol li:nth-child(3n)::before {
-  animation-delay: 1s;
-}
-
-/* Block character fade pattern for unordered lists */
-.markdown-rendered ul li:nth-child(even)::before {
-  animation-delay: 0.8s;
-}
-
-.markdown-rendered ul li:nth-child(3n)::before {
-  animation-delay: 1.6s;
-}
-
-/* ========== */
-/* CHECKLIST SUPPORT */
-/* ========== */
-
-/* Style for task lists (checkboxes) */
-.markdown-rendered ul.contains-task-list li {
-  padding-left: 2rem;
-}
-
-.markdown-rendered ul.contains-task-list li::before {
-  display: none; /* Hide block character for task lists */
-}
-
-/* Custom checkbox styling */
-.markdown-rendered ul.contains-task-list li input[type="checkbox"] {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(var(--yellow-rgb), 0.5);
-  background: transparent;
-  border-radius: 2px;
-  margin-right: 0.8rem;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.markdown-rendered ul.contains-task-list li input[type="checkbox"]:checked {
-  border-color: var(--yellow);
-  background: linear-gradient(
-    135deg,
-    rgba(var(--yellow-rgb), 0.2) 0%,
-    rgba(var(--yellow-rgb), 0.1) 100%
-  );
-  box-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.3);
-}
-
-.markdown-rendered
-  ul.contains-task-list
-  li
-  input[type="checkbox"]:checked::after {
-  content: "▓";
-  position: absolute;
-  top: -2px;
-  left: 1px;
-  font-size: 10px;
-  color: var(--yellow);
-  text-shadow: 0 0 2px rgba(var(--yellow-rgb), 0.8);
-}
-
-/* ========== */
-/* LIST ANIMATIONS */
-/* ========== */
-
-@keyframes subtle-pulse {
-  0% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
-    text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.7);
-  }
-}
-
-@keyframes block-flicker {
-  0%,
-  95% {
-    opacity: 1;
-  }
-  96%,
-  98% {
-    opacity: 0.3;
-  }
-  99%,
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes scan-line {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 100% 0;
-  }
-}
-
-/* ========== */
-/* RESPONSIVE ADJUSTMENTS */
-/* ========== */
-
-/* Smaller screens - reduce spacing */
+/* Responsive table behavior */
 @media (max-width: 768px) {
-  .markdown-rendered ol li {
-    padding-left: 2.2rem;
+  .markdown-rendered table {
+    font-size: 0.9rem;
   }
-
-  .markdown-rendered ul li {
-    padding-left: 1.5rem;
+  
+  .markdown-rendered table th,
+  .markdown-rendered table td {
+    padding: 0.5rem !important;
   }
-
-  .markdown-rendered ol li::before {
-    max-width: 1.8rem;
-    font-size: 0.75rem;
-    padding: 0.1rem 0.3rem 0.1rem 0.2rem;
-  }
-
-  .markdown-rendered ul li::before {
-    font-size: 0.85rem;
-  }
-
-  /* Reduce nested list spacing on mobile */
-  .markdown-rendered ul ul {
-    padding-left: 1rem;
-  }
-
-  .markdown-rendered ul ul ul {
-    padding-left: 0.8rem;
-  }
-
-  .markdown-rendered ul ul ul ul {
-    padding-left: 0.6rem;
+  
+  .markdown-rendered table th {
+    font-size: 0.8em !important;
   }
 }
 
-/* Extra small screens */
 @media (max-width: 480px) {
-  .markdown-rendered ol li {
-    padding-left: 2rem;
+  .markdown-rendered table {
+    font-size: 0.8rem;
   }
-
-  .markdown-rendered ul li {
-    padding-left: 1.3rem;
-  }
-
-  .markdown-rendered ol li::before {
-    max-width: 1.6rem;
-    font-size: 0.7rem;
-    padding: 0.1rem 0.2rem;
+  
+  .markdown-rendered table th,
+  .markdown-rendered table td {
+    padding: 0.3rem !important;
   }
 }
 
