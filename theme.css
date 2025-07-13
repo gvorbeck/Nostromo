@@ -233,10 +233,70 @@ body::before {
 }
 
 /* ================================================================
-   TYPOGRAPHY
+   TYPOGRAPHY - COMPREHENSIVE RETRO-FUTURISTIC STYLING
    ================================================================ */
 
-/* Headings with subtle retro styling */
+/* Typography Variables */
+body {
+  /* COLORS */
+  /* Heading Colors */
+  --h1-color: var(--yellow);
+  --h2-color: var(--yellow);
+  --h3-color: var(--yellow);
+  --h4-color: var(--yellow);
+  --h5-color: var(--yellow);
+  --h6-color: var(--yellow);
+
+  /* HORIZONTAL RULE */
+  --hr-color: var(--yellow);
+
+  /* LINE-HEIGHTS */
+  /* Line-Height Vars */
+  --heading-line-height: 1.2;
+
+  /* Heading Line-Heights */
+  --h1-line-height: var(--heading-line-height);
+  --h2-line-height: var(--heading-line-height);
+  --h3-line-height: var(--heading-line-height);
+  --h4-line-height: var(--heading-line-height);
+  --h5-line-height: var(--heading-line-height);
+  --h6-line-height: var(--heading-line-height);
+
+  /* LINKS */
+  --link-color: var(--red);
+  --link-color-hover: var(--red);
+  --link-external-color: var(--red);
+  --link-external-color-hover: var(--red);
+
+  /* SIZES */
+  /* Heading Sizes */
+  --h1-size: 5rem;
+  --h2-size: 4.5rem;
+  --h3-size: 4rem;
+  --h4-size: 3.5rem;
+  --h5-size: 3rem;
+  --h6-size: 2.5rem;
+
+  /* VARIANTS */
+  /* Heading Variants */
+  --h1-variant: var(--heading-variant);
+  --h2-variant: var(--heading-variant);
+  --h3-variant: var(--heading-variant);
+  --h4-variant: var(--heading-variant);
+  --h5-variant: var(--heading-variant);
+  --h6-variant: var(--heading-variant);
+
+  /* WEIGHTS */
+  /* Heading Weights */
+  --h1-weight: var(--heading-weight);
+  --h2-weight: var(--heading-weight);
+  --h3-weight: var(--heading-weight);
+  --h4-weight: var(--heading-weight);
+  --h5-weight: var(--heading-weight);
+  --h6-weight: var(--heading-weight);
+}
+
+/* Base heading styling */
 h1,
 h2,
 h3,
@@ -246,24 +306,30 @@ h6 {
   font-family: var(--font-interface) !important;
   font-weight: 400 !important;
   color: var(--text-accent);
-  letter-spacing: 0.02em;
-  margin: 1.5em 0 0.5em 0;
-  text-shadow: 0 0 4px currentColor;
+  letter-spacing: 0.05rem;
+  margin: 1.5rem 0 1rem 0;
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
   position: relative;
+  overflow: visible;
+  line-height: var(--heading-line-height);
 }
 
-/* Subtle hover effects */
-h1:hover,
-h2:hover,
-h3:hover,
-h4:hover,
-h5:hover,
-h6:hover {
-  text-shadow: 0 0 8px rgba(var(--yellow-rgb), 0.8);
-  transition: text-shadow 0.3s ease;
+/* Base heading styling with cyberpunk effects */
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+  position: relative;
+  font-family: var(--font-interface);
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.5);
+  margin: 1.5rem 0 1rem 0;
+  overflow: visible;
 }
 
-/* Subtle accent lines for different heading levels */
+/* Subtle accent prefixes for different heading levels */
 .markdown-rendered h1::before {
   content: "▓▒░";
   color: rgba(var(--yellow-rgb), 0.6);
@@ -318,7 +384,52 @@ h6:hover {
   top: -0.05em;
 }
 
-/* Retro underline effect for headings */
+/* Left border accents */
+h1 {
+  border-left: 3px solid rgba(var(--yellow-rgb), 0.6);
+  padding-left: 1rem;
+  position: relative;
+  font-size: calc(var(--font-text-size) * 2);
+  color: var(--yellow);
+}
+
+h2 {
+  border-left: 2px solid rgba(var(--yellow-rgb), 0.4);
+  padding-left: 0.8rem;
+  position: relative;
+  font-size: calc(var(--font-text-size) * 1.6);
+  color: var(--yellow);
+}
+
+h3 {
+  border-left: 1px solid rgba(var(--yellow-rgb), 0.3);
+  padding-left: 0.5rem;
+  font-size: calc(var(--font-text-size) * 1.4);
+  color: var(--orange);
+}
+
+h4 {
+  border-left: 1px solid rgba(var(--yellow-rgb), 0.25);
+  padding-left: 0.4rem;
+  font-size: calc(var(--font-text-size) * 1.2);
+  color: var(--blue);
+}
+
+h5 {
+  border-left: 1px solid rgba(var(--yellow-rgb), 0.2);
+  padding-left: 0.3rem;
+  font-size: calc(var(--font-text-size) * 1.1);
+  color: var(--text-muted);
+}
+
+h6 {
+  border-left: 1px solid rgba(var(--yellow-rgb), 0.15);
+  padding-left: 0.2rem;
+  font-size: calc(var(--font-text-size) * 1.1);
+  color: var(--text-muted);
+}
+
+/* Retro underline effect for major headings */
 h1::after,
 h2::after {
   content: "";
@@ -331,30 +442,15 @@ h2::after {
   box-shadow: 0 0 5px currentColor;
 }
 
-h1 {
-  font-size: calc(var(--font-text-size) * 2);
-  color: var(--yellow);
-}
-
-h2 {
-  font-size: calc(var(--font-text-size) * 1.6);
-  color: var(--yellow);
-}
-
-h3 {
-  font-size: calc(var(--font-text-size) * 1.4);
-  color: var(--orange);
-}
-
-h4 {
-  font-size: calc(var(--font-text-size) * 1.2);
-  color: var(--blue);
-}
-
-h5,
-h6 {
-  font-size: calc(var(--font-text-size) * 1.1);
-  color: var(--text-muted);
+/* Hover effects */
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover {
+  text-shadow: 0 0 8px rgba(var(--yellow-rgb), 0.8);
+  transition: text-shadow 0.3s ease;
 }
 
 /* Paragraph text */
@@ -375,6 +471,250 @@ strong {
   font-weight: bold;
   font-family: var(--font-interface);
   text-shadow: 0 0 5px currentColor;
+}
+
+/* ================================================================
+   HORIZONTAL RULES - RETRO-FUTURISTIC DIVIDERS
+   ================================================================ */
+
+/* Reset default HR styling */
+.markdown-rendered hr {
+  border: none !important;
+  background: none !important;
+  height: auto !important;
+  margin: 3rem 0 !important;
+  position: relative !important;
+  overflow: visible !important;
+  clear: both !important;
+}
+
+/* Main cyberpunk divider line */
+.markdown-rendered hr::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--red-rgb), 0.3) 10%,
+    rgba(var(--red-rgb), 0.8) 50%,
+    rgba(var(--red-rgb), 0.3) 90%,
+    transparent 100%
+  ) !important;
+  transform: translateY(-50%) !important;
+  z-index: 1 !important;
+}
+
+/* Cyberpunk accent elements */
+.markdown-rendered hr::after {
+  content: "▓▓▒▒░░ ◦◦◦ ░░▒▒▓▓" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: var(--background-primary) !important;
+  padding: 0 1rem !important;
+  font-family: var(--font-interface) !important;
+  font-size: 0.8rem !important;
+  color: rgba(var(--red-rgb), 0.6) !important;
+  text-shadow: 0 0 4px rgba(var(--red-rgb), 0.4) !important;
+  letter-spacing: 0.2em !important;
+  z-index: 2 !important;
+  white-space: nowrap !important;
+  animation: subtle-glow 4s ease-in-out infinite alternate !important;
+}
+
+/* Glow effect on hover */
+.markdown-rendered hr:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--red-rgb), 0.4) 10%,
+    rgba(var(--red-rgb), 1) 50%,
+    rgba(var(--red-rgb), 0.4) 90%,
+    transparent 100%
+  ) !important;
+  box-shadow: 0 0 8px rgba(var(--red-rgb), 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.markdown-rendered hr:hover::after {
+  color: rgba(var(--red-rgb), 0.9) !important;
+  text-shadow: 0 0 6px rgba(var(--red-rgb), 0.7) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Alternative minimal HR style - add class .minimal-hr */
+.markdown-rendered hr.minimal-hr::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--red-rgb), 0.2) 20%,
+    rgba(var(--red-rgb), 0.6) 50%,
+    rgba(var(--red-rgb), 0.2) 80%,
+    transparent 100%
+  ) !important;
+  height: 1px !important;
+}
+
+.markdown-rendered hr.minimal-hr::after {
+  content: "◦◦◦" !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.5em !important;
+  color: rgba(var(--red-rgb), 0.5) !important;
+}
+
+/* Alternative tech HR style - add class .tech-hr */
+.markdown-rendered hr.tech-hr::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--red-rgb), 0.1) 5%,
+    rgba(var(--red-rgb), 0.4) 25%,
+    rgba(var(--red-rgb), 0.8) 50%,
+    rgba(var(--red-rgb), 0.4) 75%,
+    rgba(var(--red-rgb), 0.1) 95%,
+    transparent 100%
+  ) !important;
+  height: 3px !important;
+}
+
+.markdown-rendered hr.tech-hr::after {
+  content: "▸▸▸ SYSTEM BREAK ◂◂◂" !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  color: rgba(var(--red-rgb), 0.7) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--red-rgb), 0.1) 0%,
+    var(--background-primary) 50%,
+    rgba(var(--red-rgb), 0.1) 100%
+  ) !important;
+  border: 1px solid rgba(var(--red-rgb), 0.3) !important;
+  border-radius: 2px !important;
+  padding: 0.2rem 0.8rem !important;
+}
+
+/* Grid pattern HR - add class .grid-hr */
+.markdown-rendered hr.grid-hr {
+  height: 4rem !important;
+  margin: 2rem 0 !important;
+}
+
+.markdown-rendered hr.grid-hr::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 80% !important;
+  height: 100% !important;
+  background-image: linear-gradient(
+      90deg,
+      rgba(var(--red-rgb), 0.1) 1px,
+      transparent 1px
+    ),
+    linear-gradient(0deg, rgba(var(--red-rgb), 0.1) 1px, transparent 1px) !important;
+  background-size: 8px 8px !important;
+  opacity: 0.6 !important;
+  z-index: 1 !important;
+}
+
+.markdown-rendered hr.grid-hr::after {
+  content: "▓▒░ DATA STREAM ░▒▓" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background: var(--background-primary) !important;
+  padding: 0.5rem 1rem !important;
+  border: 2px solid rgba(var(--red-rgb), 0.4) !important;
+  border-radius: 3px !important;
+  font-family: var(--font-interface) !important;
+  font-size: 0.7rem !important;
+  color: rgba(var(--red-rgb), 0.8) !important;
+  text-shadow: 0 0 3px rgba(var(--red-rgb), 0.5) !important;
+  letter-spacing: 0.3em !important;
+  z-index: 2 !important;
+}
+
+/* Scanning line HR - add class .scan-hr */
+.markdown-rendered hr.scan-hr {
+  height: 2rem !important;
+  overflow: hidden !important;
+}
+
+.markdown-rendered hr.scan-hr::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1px !important;
+  background: rgba(var(--red-rgb), 0.3) !important;
+  transform: translateY(-50%) !important;
+}
+
+.markdown-rendered hr.scan-hr::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: -10% !important;
+  width: 20% !important;
+  height: 3px !important;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--red-rgb), 0.8) 50%,
+    transparent 100%
+  ) !important;
+  transform: translateY(-50%) !important;
+  animation: scan-sweep 3s linear infinite !important;
+}
+
+@keyframes scan-sweep {
+  0% {
+    left: -10%;
+  }
+  100% {
+    left: 110%;
+  }
+}
+
+/* Terminal HR style - add class .terminal-hr */
+.markdown-rendered hr.terminal-hr::before {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--red-rgb), 0.1) 0%,
+    rgba(var(--red-rgb), 0.3) 25%,
+    rgba(var(--red-rgb), 0.6) 50%,
+    rgba(var(--red-rgb), 0.3) 75%,
+    rgba(var(--red-rgb), 0.1) 100%
+  ) !important;
+  height: 1px !important;
+}
+
+.markdown-rendered hr.terminal-hr::after {
+  content: "─────────●─────────" !important;
+  font-family: var(--font-terminal) !important;
+  font-size: 0.8rem !important;
+  color: rgba(var(--red-rgb), 0.6) !important;
+  letter-spacing: 0.1em !important;
+  text-shadow: 0 0 3px rgba(var(--red-rgb), 0.4) !important;
+}
+
+/* Subtle glow animation for HR elements */
+@keyframes subtle-glow {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* ================================================================
