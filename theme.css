@@ -733,6 +733,120 @@ strong {
 }
 
 /* ================================================================
+   STRIKETHROUGH
+   ================================================================ */
+
+/* Cyberpunk strikethrough for deleted text */
+del {
+  text-decoration: none !important;
+  position: relative;
+  color: var(--red) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(var(--red-rgb), 0.05) 0%,
+    rgba(var(--red-rgb), 0.1) 50%,
+    rgba(var(--red-rgb), 0.05) 100%
+  );
+  padding: 0 4px;
+  border-radius: 2px;
+  font-family: var(--font-interface);
+  text-shadow: 0 0 3px rgba(var(--red-rgb), 0.4);
+  border: 1px solid rgba(var(--red-rgb), 0.2);
+  animation: glitch-flicker 3s ease-in-out infinite;
+}
+
+/* Triple strikethrough lines for that tech glitch effect */
+del::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--red) 20%,
+    var(--red) 80%,
+    transparent 100%
+  );
+  transform: translateY(-50%);
+  box-shadow: 0 -2px 0 rgba(var(--red-rgb), 0.6),
+    0 2px 0 rgba(var(--red-rgb), 0.6);
+  z-index: 1;
+}
+
+/* Glitch bars on sides */
+del::after {
+  content: "▓▒░";
+  position: absolute;
+  top: 50%;
+  right: -8px;
+  transform: translateY(-50%);
+  color: rgba(var(--red-rgb), 0.4);
+  font-size: 0.6em;
+  font-family: var(--font-interface);
+  letter-spacing: 0.1em;
+  animation: block-flicker 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Error prefix indicator */
+del:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--red) 10%,
+    var(--red) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 -2px 0 var(--red), 0 2px 0 var(--red),
+    0 0 6px rgba(var(--red-rgb), 0.5);
+  transition: all 0.2s ease;
+}
+
+del:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--red-rgb), 0.1) 0%,
+    rgba(var(--red-rgb), 0.2) 50%,
+    rgba(var(--red-rgb), 0.1) 100%
+  );
+  border-color: rgba(var(--red-rgb), 0.4);
+  text-shadow: 0 0 6px rgba(var(--red-rgb), 0.6);
+  box-shadow: 0 0 8px rgba(var(--red-rgb), 0.3);
+}
+
+/* Glitch animation for cyberpunk effect */
+@keyframes glitch-flicker {
+  0%,
+  94%,
+  100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+    transform: translateX(1px);
+  }
+  96% {
+    opacity: 0.6;
+    transform: translateX(-1px);
+  }
+  97% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+  98% {
+    opacity: 0.7;
+    transform: translateX(1px);
+  }
+  99% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================================================================
    LINKS
    ================================================================ */
 
