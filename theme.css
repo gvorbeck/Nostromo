@@ -1389,8 +1389,7 @@ blockquote,
   color: rgba(var(--text-normal), 0.9);
   overflow: visible;
   border-radius: var(--border-radius);
-  box-shadow: 
-    inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
+  box-shadow: inset 0 0 10px rgba(var(--yellow-rgb), 0.1),
     0 0 5px rgba(var(--yellow-rgb), 0.2);
 }
 
@@ -1440,8 +1439,7 @@ blockquote:hover,
     rgba(var(--yellow-rgb), 0.04) 30%,
     rgba(var(--yellow-rgb), 0.01) 70%
   );
-  box-shadow: 
-    inset 0 0 15px rgba(var(--yellow-rgb), 0.15),
+  box-shadow: inset 0 0 15px rgba(var(--yellow-rgb), 0.15),
     0 0 8px rgba(var(--yellow-rgb), 0.3);
   transition: all 0.3s ease;
 }
@@ -1907,10 +1905,214 @@ select:focus {
 }
 
 /* ================================================================
-   CALLOUTS AND SPECIAL ELEMENTS
+   CALLOUTS AND SPECIAL ELEMENTS - RETRO-FUTURISTIC STYLING
    ================================================================ */
 
-/* Callout boxes with subtle styling */
+/* Target callouts in reading view only */
+.markdown-rendered .callout {
+  position: relative;
+  border: none !important;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 1.5rem 0;
+  overflow: visible;
+  animation: subtle-glow 4s ease-in-out infinite alternate;
+}
+
+/* Main callout container with gradient border effect */
+.markdown-rendered .callout::before {
+  content: "▓▓▒▒░░";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--callout-color), 1) 0%,
+    rgba(var(--callout-color), 0.8) 25%,
+    rgba(var(--callout-color), 0.4) 50%,
+    rgba(var(--callout-color), 0.2) 75%,
+    rgba(var(--callout-color), 0.1) 100%
+  );
+  z-index: -1;
+  border-radius: 4px;
+  font-size: 0;
+  background-size: 6px 100%;
+  background-repeat: repeat-x;
+}
+
+/* Inner content background */
+.markdown-rendered .callout::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-primary);
+  z-index: -1;
+  border-radius: 2px;
+}
+
+/* Title styling with block character fade */
+.markdown-rendered .callout-title {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--callout-color), 0.3) 0%,
+    rgba(var(--callout-color), 0.15) 50%,
+    rgba(var(--callout-color), 0.05) 100%
+  );
+  border-bottom: 1px solid rgba(var(--callout-color), 0.4);
+  padding: 0.75rem 1rem;
+  margin: 0;
+  font-family: var(--font-interface);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-accent);
+  font-weight: normal;
+}
+
+/* Title fade effect with block characters */
+.markdown-rendered .callout-title::before {
+  content: "▓▒░";
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: rgba(var(--callout-color), 0.4);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  pointer-events: none;
+  animation: block-fade 2s ease-in-out infinite;
+}
+
+/* Scan line effect */
+.markdown-rendered .callout-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 45%,
+    rgba(var(--callout-color), 0.8) 50%,
+    transparent 55%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: scanline 3s ease-in-out infinite;
+}
+
+/* Icon styling */
+.markdown-rendered .callout-icon {
+  color: rgba(var(--callout-color), 1);
+  filter: drop-shadow(0 0 4px rgba(var(--callout-color), 0.5));
+}
+
+/* Content area with subtle block pattern */
+.markdown-rendered .callout-content {
+  padding: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--callout-color), 0.02) 0%,
+    transparent 30%
+  );
+  position: relative;
+}
+
+/* Alternative grid pattern overlay with block chars */
+.markdown-rendered .callout-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--callout-color), 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Block character pattern in content area */
+.markdown-rendered .callout-content::after {
+  content: "░";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  color: rgba(var(--callout-color), 0.1);
+  font-size: 2rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Corner brackets for that tech feel */
+.markdown-rendered .callout-title-inner::before,
+.markdown-rendered .callout-title-inner::after {
+  content: "▓";
+  position: absolute;
+  color: rgba(var(--callout-color), 0.6);
+  font-size: 0.6rem;
+}
+
+.markdown-rendered .callout-title-inner::before {
+  top: 2px;
+  left: 4px;
+}
+
+.markdown-rendered .callout-title-inner::after {
+  top: 2px;
+  right: 4px;
+}
+
+/* Glow effect on hover */
+.markdown-rendered .callout:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--callout-color), 1) 0%,
+    rgba(var(--callout-color), 0.9) 25%,
+    rgba(var(--callout-color), 0.6) 50%,
+    rgba(var(--callout-color), 0.3) 75%,
+    rgba(var(--callout-color), 0.15) 100%
+  );
+  filter: drop-shadow(0 0 8px rgba(var(--callout-color), 0.4));
+  transition: all 0.3s ease;
+}
+
+/* Stronger fade for specific callout types */
+.markdown-rendered .callout[data-callout="warning"]::before,
+.markdown-rendered .callout[data-callout="error"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--callout-color), 1) 0%,
+    rgba(var(--callout-color), 0.7) 20%,
+    rgba(var(--callout-color), 0.3) 40%,
+    rgba(var(--callout-color), 0.1) 60%,
+    rgba(var(--callout-color), 0.05) 80%,
+    transparent 100%
+  );
+}
+
+/* Warning/Error gets more aggressive block chars */
+.markdown-rendered .callout[data-callout="warning"] .callout-title::before,
+.markdown-rendered .callout[data-callout="error"] .callout-title::before {
+  content: "▓▓▒▒░░";
+  letter-spacing: 0.1em;
+  animation: aggressive-block-fade 1.5s ease-in-out infinite;
+}
+
+/* Fallback styling for non-markdown-rendered callouts */
 .callout {
   border: 1px solid var(--background-modifier-border);
   background: var(--background-secondary);
@@ -1931,7 +2133,7 @@ select:focus {
   padding: var(--padding);
 }
 
-/* Different callout types */
+/* Different callout types fallback */
 .callout[data-callout="info"] {
   border-color: rgba(var(--blue-rgb), 0.3);
 }
@@ -1946,6 +2148,54 @@ select:focus {
 
 .callout[data-callout="success"] {
   border-color: rgba(var(--green-rgb), 0.3);
+}
+
+/* ========================================
+   CALLOUT ANIMATIONS
+   ======================================== */
+
+@keyframes block-fade {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes aggressive-block-fade {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Subtle animation for the whole callout */
+@keyframes subtle-glow {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(var(--callout-color), 0.1));
+  }
+  100% {
+    filter: drop-shadow(0 0 4px rgba(var(--callout-color), 0.2));
+  }
 }
 
 /* ================================================================
