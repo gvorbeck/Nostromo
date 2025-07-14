@@ -247,6 +247,92 @@ body::before {
     0 0 20px rgba(var(--yellow-rgb), 0.05);
 }
 
+/* Terminal status indicator - bottom left cassette-futurism style */
+.workspace::before {
+  content: "█ SYSTEM ONLINE █ REC ● NOSTROMO_TERM: ACTIVE █";
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: var(--green);
+  font-family: var(--font-terminal);
+  font-size: 9px;
+  font-weight: normal;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(var(--green-rgb), 0.1) 20%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  border: 1px solid rgba(var(--green-rgb), 0.3);
+  border-radius: 2px;
+  padding: 2px 8px;
+  text-shadow: 0 0 3px currentColor;
+  box-shadow: 0 0 8px rgba(var(--green-rgb), 0.2),
+    inset 0 0 5px rgba(var(--green-rgb), 0.1);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 9999;
+  animation: terminal-status-glow 3s ease-in-out infinite alternate,
+    terminal-status-flicker 8s linear infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 400px;
+  letter-spacing: 0.5px;
+}
+
+/* Subtle status bar animations */
+@keyframes terminal-status-glow {
+  0% {
+    text-shadow: 0 0 3px currentColor;
+    box-shadow: 0 0 8px rgba(var(--green-rgb), 0.2),
+      inset 0 0 5px rgba(var(--green-rgb), 0.1);
+  }
+  100% {
+    text-shadow: 0 0 5px currentColor, 0 0 8px rgba(var(--green-rgb), 0.3);
+    box-shadow: 0 0 12px rgba(var(--green-rgb), 0.3),
+      inset 0 0 8px rgba(var(--green-rgb), 0.15);
+  }
+}
+
+@keyframes terminal-status-flicker {
+  0%,
+  98% {
+    opacity: 0.8;
+  }
+  98.5% {
+    opacity: 0.3;
+  }
+  99% {
+    opacity: 0.9;
+  }
+  99.5% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* Hide status on very small screens */
+@media (max-width: 600px) {
+  .workspace::before {
+    content: "█ REC ● ONLINE █";
+    font-size: 8px;
+    padding: 1px 4px;
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .workspace::before {
+    display: none;
+  }
+}
+
+.workspace-sidedock-vault-profile {
+  margin-bottom: 25px;
+}
+
 /* ================================================================
    TYPOGRAPHY - COMPREHENSIVE RETRO-FUTURISTIC STYLING
    ================================================================ */
