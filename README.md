@@ -2,7 +2,7 @@
 
 An 80's retro-futuristic Obsidian theme. Experience Obsidian as if you're working on an aging starship's terminal screen.
 
-![Nostromo Theme Screenshot](assets/screenshot.jpg)
+![Nostromo Theme Screenshot](assets/screenshot.png)
 
 ## Features
 
