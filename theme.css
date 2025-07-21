@@ -1007,6 +1007,115 @@ a:hover::before {
   width: 100%;
 }
 
+code:hover {
+  background: rgba(var(--yellow-rgb), 0.2);
+  text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.6);
+  border-color: rgba(var(--yellow-rgb), 0.6);
+  box-shadow: 0 0 8px rgba(var(--yellow-rgb), 0.3);
+  transition: all 0.2s ease;
+}
+
+/* ========== */
+/* LINE NUMBERS - TERMINAL STYLE */
+/* ========== */
+
+/* CodeMirror line numbers */
+.cm-gutterElement {
+  font-family: var(--font-terminal) !important;
+  color: rgba(var(--yellow-rgb), 0.4) !important;
+  background: transparent !important;
+  text-align: right !important;
+  padding-right: 0.5rem !important;
+  position: relative;
+  font-size: 0.85rem !important;
+  line-height: inherit !important;
+  text-shadow: 0 0 3px rgba(var(--yellow-rgb), 0.2);
+}
+
+/* Terminal-style prefix for line numbers */
+.cm-gutterElement::before {
+  content: ">";
+  color: rgba(var(--yellow-rgb), 0.2);
+  margin-right: 0.2rem;
+  font-size: 0.7em;
+}
+
+/* Hover effect for line numbers */
+.cm-gutterElement:hover {
+  color: rgba(var(--yellow-rgb), 0.7) !important;
+  text-shadow: 0 0 5px rgba(var(--yellow-rgb), 0.4);
+  background: rgba(var(--yellow-rgb), 0.02) !important;
+  transition: all 0.2s ease;
+}
+
+.cm-gutterElement:hover::before {
+  color: rgba(var(--yellow-rgb), 0.5);
+  text-shadow: 0 0 3px rgba(var(--yellow-rgb), 0.3);
+}
+
+/* Active line number highlighting */
+.cm-line.cm-activeLine .cm-gutterElement,
+.cm-activeLine .cm-gutterElement {
+  color: var(--yellow) !important;
+  text-shadow: 0 0 6px rgba(var(--yellow-rgb), 0.5);
+  background: linear-gradient(
+    90deg,
+    rgba(var(--yellow-rgb), 0.05) 0%,
+    rgba(var(--yellow-rgb), 0.02) 100%
+  ) !important;
+  border-right: 1px solid rgba(var(--yellow-rgb), 0.3);
+}
+
+.cm-activeLine .cm-gutterElement::before {
+  content: "▸";
+  color: var(--yellow);
+  text-shadow: 0 0 4px rgba(var(--yellow-rgb), 0.6);
+}
+
+/* Gutter container styling */
+.cm-gutters {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--bg-secondary), 0.8) 0%,
+    rgba(var(--bg-secondary), 0.9) 80%,
+    transparent 100%
+  ) !important;
+  border-right: 1px solid rgba(var(--yellow-rgb), 0.1) !important;
+  position: relative;
+}
+
+/* Subtle grid pattern in gutter */
+.cm-gutters::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    rgba(var(--yellow-rgb), 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Terminal-style corner bracket */
+.cm-gutters::after {
+  content: "┤";
+  position: absolute;
+  top: 0.5rem;
+  right: 2px;
+  color: rgba(var(--yellow-rgb), 0.2);
+  font-family: var(--font-terminal);
+  font-size: 10px;
+  pointer-events: none;
+}
+
+/* ========== */
+
 /* Internal links */
 .internal-link {
   color: var(--blue);
