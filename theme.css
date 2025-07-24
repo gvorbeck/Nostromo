@@ -1115,51 +1115,40 @@ code:hover {
 }
 
 /* ========== */
+/* LINKS - INTERNAL AND EXTERNAL */
+.internal-link,
+.external-link {
+  position: relative;
+}
+
+.internal-link:hover,
+.external-link:hover {
+  color: var(--text-accent);
+}
+
+.internal-link::after,
+.external-link::after {
+  font-family: var(--font-terminal);
+  font-size: 0.7em;
+  color: var(--text-muted);
+}
 
 /* Internal links */
 .internal-link {
   color: var(--blue);
-  position: relative;
-}
-
-.internal-link:hover {
-  color: var(--text-accent);
 }
 
 .internal-link::after {
   content: " [LINK]";
-  font-family: var(--font-terminal);
-  font-size: 0.7em;
-  color: var(--text-muted);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.internal-link:hover::after {
-  opacity: 1;
 }
 
 /* External links */
 .external-link {
   color: var(--purple);
-  position: relative;
-}
-
-.external-link:hover {
-  color: var(--text-accent);
 }
 
 .external-link::after {
   content: " [EXT]";
-  font-family: var(--font-terminal);
-  font-size: 0.7em;
-  color: var(--text-muted);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.external-link:hover::after {
-  opacity: 1;
 }
 
 /* ================================================================
