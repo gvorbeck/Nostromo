@@ -620,7 +620,7 @@ strong {
    ================================================================ */
 
 /* Reset default HR styling */
-.markdown-rendered hr {
+hr {
   border: none !important;
   background: none !important;
   height: 1px !important;
@@ -631,7 +631,7 @@ strong {
 }
 
 /* Main cyberpunk divider line */
-.markdown-rendered hr::before {
+hr::before {
   content: "" !important;
   position: absolute !important;
   top: 50% !important;
@@ -651,7 +651,7 @@ strong {
 }
 
 /* Cyberpunk accent elements */
-.markdown-rendered hr::after {
+hr::after {
   content: "▓▓▒▒░░ ◦◦◦ ░░▒▒▓▓" !important;
   position: absolute !important;
   top: 50% !important;
@@ -670,7 +670,7 @@ strong {
 }
 
 /* Glow effect on hover */
-.markdown-rendered hr:hover::before {
+hr:hover::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -683,14 +683,14 @@ strong {
   transition: all 0.3s ease !important;
 }
 
-.markdown-rendered hr:hover::after {
+hr:hover::after {
   color: rgba(var(--red-rgb), 0.9) !important;
   text-shadow: 0 0 6px rgba(var(--red-rgb), 0.7) !important;
   transition: all 0.3s ease !important;
 }
 
 /* Alternative minimal HR style - add class .minimal-hr */
-.markdown-rendered hr.minimal-hr::before {
+hr.minimal-hr::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -702,7 +702,7 @@ strong {
   height: 1px !important;
 }
 
-.markdown-rendered hr.minimal-hr::after {
+hr.minimal-hr::after {
   content: "◦◦◦" !important;
   font-size: 0.7rem !important;
   letter-spacing: 0.5em !important;
@@ -710,7 +710,7 @@ strong {
 }
 
 /* Alternative tech HR style - add class .tech-hr */
-.markdown-rendered hr.tech-hr::before {
+hr.tech-hr::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -724,7 +724,7 @@ strong {
   height: 3px !important;
 }
 
-.markdown-rendered hr.tech-hr::after {
+hr.tech-hr::after {
   content: "▸▸▸ SYSTEM BREAK ◂◂◂" !important;
   font-size: 0.75rem !important;
   text-transform: uppercase !important;
@@ -742,12 +742,12 @@ strong {
 }
 
 /* Grid pattern HR - add class .grid-hr */
-.markdown-rendered hr.grid-hr {
+hr.grid-hr {
   height: 4rem !important;
   margin: 2rem 0 !important;
 }
 
-.markdown-rendered hr.grid-hr::before {
+hr.grid-hr::before {
   content: "" !important;
   position: absolute !important;
   top: 0 !important;
@@ -766,7 +766,7 @@ strong {
   z-index: 1 !important;
 }
 
-.markdown-rendered hr.grid-hr::after {
+hr.grid-hr::after {
   content: "▓▒░ DATA STREAM ░▒▓" !important;
   position: absolute !important;
   top: 50% !important;
@@ -785,12 +785,12 @@ strong {
 }
 
 /* Scanning line HR - add class .scan-hr */
-.markdown-rendered hr.scan-hr {
+hr.scan-hr {
   height: 2rem !important;
   overflow: hidden !important;
 }
 
-.markdown-rendered hr.scan-hr::before {
+hr.scan-hr::before {
   content: "" !important;
   position: absolute !important;
   top: 50% !important;
@@ -801,7 +801,7 @@ strong {
   transform: translateY(-50%) !important;
 }
 
-.markdown-rendered hr.scan-hr::after {
+hr.scan-hr::after {
   content: "" !important;
   position: absolute !important;
   top: 50% !important;
@@ -828,7 +828,7 @@ strong {
 }
 
 /* Terminal HR style - add class .terminal-hr */
-.markdown-rendered hr.terminal-hr::before {
+hr.terminal-hr::before {
   background: linear-gradient(
     90deg,
     rgba(var(--red-rgb), 0.1) 0%,
@@ -840,7 +840,7 @@ strong {
   height: 1px !important;
 }
 
-.markdown-rendered hr.terminal-hr::after {
+hr.terminal-hr::after {
   content: "─────────●─────────" !important;
   font-family: var(--font-terminal) !important;
   font-size: 0.8rem !important;
