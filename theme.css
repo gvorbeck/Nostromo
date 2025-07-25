@@ -653,7 +653,8 @@ strong {
 }
 
 /* Cyberpunk accent elements */
-.markdown-rendered hr::after {
+.markdown-rendered hr::after,
+.markdown-source-view.mod-cm6 hr::after {
   content: "▓▓▒▒░░ ◦◦◦ ░░▒▒▓▓" !important;
   position: absolute !important;
   top: 50% !important;
@@ -672,7 +673,8 @@ strong {
 }
 
 /* Glow effect on hover */
-.markdown-rendered hr:hover::before {
+.markdown-rendered hr:hover::before,
+.markdown-source-view.mod-cm6 hr:hover::before {
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -685,180 +687,11 @@ strong {
   transition: all 0.3s ease !important;
 }
 
-.markdown-rendered hr:hover::after {
+.markdown-rendered hr:hover::after,
+.markdown-source-view.mod-cm6 hr:hover::after {
   color: rgba(var(--red-rgb), 0.9) !important;
   text-shadow: 0 0 6px rgba(var(--red-rgb), 0.7) !important;
   transition: all 0.3s ease !important;
-}
-
-/* Alternative minimal HR style - add class .minimal-hr */
-.markdown-rendered hr.minimal-hr::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--red-rgb), 0.2) 20%,
-    rgba(var(--red-rgb), 0.6) 50%,
-    rgba(var(--red-rgb), 0.2) 80%,
-    transparent 100%
-  ) !important;
-  height: 1px !important;
-}
-
-.markdown-rendered hr.minimal-hr::after {
-  content: "◦◦◦" !important;
-  font-size: 0.7rem !important;
-  letter-spacing: 0.5em !important;
-  color: rgba(var(--red-rgb), 0.5) !important;
-}
-
-/* Alternative tech HR style - add class .tech-hr */
-.markdown-rendered hr.tech-hr::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--red-rgb), 0.1) 5%,
-    rgba(var(--red-rgb), 0.4) 25%,
-    rgba(var(--red-rgb), 0.8) 50%,
-    rgba(var(--red-rgb), 0.4) 75%,
-    rgba(var(--red-rgb), 0.1) 95%,
-    transparent 100%
-  ) !important;
-  height: 3px !important;
-}
-
-.markdown-rendered hr.tech-hr::after {
-  content: "▸▸▸ SYSTEM BREAK ◂◂◂" !important;
-  font-size: 0.75rem !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.15em !important;
-  color: rgba(var(--red-rgb), 0.7) !important;
-  background: linear-gradient(
-    135deg,
-    rgba(var(--red-rgb), 0.1) 0%,
-    var(--background-primary) 50%,
-    rgba(var(--red-rgb), 0.1) 100%
-  ) !important;
-  border: 1px solid rgba(var(--red-rgb), 0.3) !important;
-  border-radius: 2px !important;
-  padding: 0.2rem 0.8rem !important;
-}
-
-/* Grid pattern HR - add class .grid-hr */
-.markdown-rendered hr.grid-hr {
-  height: 4rem !important;
-  margin: 2rem 0 !important;
-}
-
-.markdown-rendered hr.grid-hr::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 80% !important;
-  height: 100% !important;
-  background-image: linear-gradient(
-      90deg,
-      rgba(var(--red-rgb), 0.1) 1px,
-      transparent 1px
-    ),
-    linear-gradient(0deg, rgba(var(--red-rgb), 0.1) 1px, transparent 1px) !important;
-  background-size: 8px 8px !important;
-  opacity: 0.6 !important;
-  z-index: 1 !important;
-}
-
-.markdown-rendered hr.grid-hr::after {
-  content: "▓▒░ DATA STREAM ░▒▓" !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  background: var(--background-primary) !important;
-  padding: 0.5rem 1rem !important;
-  border: 2px solid rgba(var(--red-rgb), 0.4) !important;
-  border-radius: 3px !important;
-  font-family: var(--font-interface) !important;
-  font-size: 0.7rem !important;
-  color: rgba(var(--red-rgb), 0.8) !important;
-  text-shadow: 0 0 3px rgba(var(--red-rgb), 0.5) !important;
-  letter-spacing: 0.3em !important;
-  z-index: 2 !important;
-}
-
-/* Scanning line HR - add class .scan-hr */
-.markdown-rendered hr.scan-hr {
-  height: 2rem !important;
-  overflow: hidden !important;
-}
-
-.markdown-rendered hr.scan-hr::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 1px !important;
-  background: rgba(var(--red-rgb), 0.3) !important;
-  transform: translateY(-50%) !important;
-}
-
-.markdown-rendered hr.scan-hr::after {
-  content: "" !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: -10% !important;
-  width: 20% !important;
-  height: 3px !important;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(var(--red-rgb), 0.8) 50%,
-    transparent 100%
-  ) !important;
-  transform: translateY(-50%) !important;
-  animation: scan-sweep 3s linear infinite !important;
-}
-
-@keyframes scan-sweep {
-  0% {
-    left: -10%;
-  }
-  100% {
-    left: 110%;
-  }
-}
-
-/* Terminal HR style - add class .terminal-hr */
-.markdown-rendered hr.terminal-hr::before {
-  background: linear-gradient(
-    90deg,
-    rgba(var(--red-rgb), 0.1) 0%,
-    rgba(var(--red-rgb), 0.3) 25%,
-    rgba(var(--red-rgb), 0.6) 50%,
-    rgba(var(--red-rgb), 0.3) 75%,
-    rgba(var(--red-rgb), 0.1) 100%
-  ) !important;
-  height: 1px !important;
-}
-
-.markdown-rendered hr.terminal-hr::after {
-  content: "─────────●─────────" !important;
-  font-family: var(--font-terminal) !important;
-  font-size: 0.8rem !important;
-  color: rgba(var(--red-rgb), 0.6) !important;
-  letter-spacing: 0.1em !important;
-  text-shadow: 0 0 3px rgba(var(--red-rgb), 0.4) !important;
-}
-
-/* Subtle glow animation for HR elements */
-@keyframes subtle-glow {
-  0% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 /* ================================================================
